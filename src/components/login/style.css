@@ -1,0 +1,17 @@
+.containerLogin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.containerLogin form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.containerLogin input {
+  width: 20vw;
+  height: 5vh;
+  border-radius: 1.5rem;
+  border: none;
+}

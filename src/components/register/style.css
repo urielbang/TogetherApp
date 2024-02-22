@@ -1,0 +1,17 @@
+.containerRegister {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.formRegister {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.formRegister input {
+  width: 20vw;
+  height: 5vh;
+  border-radius: 1.5rem;
+  border: none;
+}

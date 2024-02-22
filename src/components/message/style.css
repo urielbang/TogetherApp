@@ -1,0 +1,24 @@
+.cardMessage {
+  display: flex;
+  gap: 1rem;
+
+  align-items: center;
+}
+.messageName {
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: rgba(33, 37, 41, 0.108);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.commentContent {
+  display: flex;
+}
+.textAndDate {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+
+  width: 100%;
+}

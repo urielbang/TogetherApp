@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  background-color: #fbfcfe;
+  font-family: Montserrat, sans-serif;
+}
+.containerApp {
+  min-height: 100vh;
+  max-height: 100%;
+  display: grid;
+
+  grid-template-columns: 25% 75%;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "navBar navBar"
+    "sideBar main";
+}
+
+.navBar {
+  grid-area: navBar;
+  height: 10vh;
+  position: fixed;
+  width: 100%;
+
+  top: 0;
+  background-color: white;
+  z-index: 1;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.sideBar {
+  grid-area: sideBar;
+  position: sticky;
+  top: 10vh;
+  background-color: white;
+  height: 90vh;
+
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+
+  margin-left: 1rem;
+  overflow-y: auto;
+}
+
+.main {
+  grid-area: main;
+
+  display: flex;
+  justify-content: center;
+
+  max-height: 100%;
+  margin-top: 10vh;
+  overflow: hidden;
+}
