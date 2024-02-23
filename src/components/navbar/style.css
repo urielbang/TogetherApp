@@ -3,8 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-right: 2rem;
+  gap: 1.5rem;
 }
 .navBar ul li a {
   text-decoration: none;
@@ -16,5 +15,36 @@
   justify-content: space-between;
 }
 .iconHome {
-  width: 5vw;
+  width: 3.5vw;
+}
+.navBarMiddleIcons {
+  display: flex;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  
+  padding: 0.8rem;
+display: flex;
+width: 15vw;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  background-color: #f0f0f0; 
+  outline: none;
+  transition: border-color 0.2s; /
+}
+
+.search-input:focus {
+  border-color: #a0a0a0; 
+}
+
+.search-icon {
+  position: absolute;
+
+  fill: #a0a0a0; 
 }
