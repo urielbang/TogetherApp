@@ -7,7 +7,8 @@ import "./style.css";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { LuMessageSquare } from "react-icons/lu";
-import { IoSettingsOutline } from "react-icons/io5";
+import { CiSettings } from "react-icons/ci";
+
 import homeImg from "../../assets/wired-flat-63-home.gif";
 import userImg from "../../assets/man.png";
 import logIn from "../../assets/login.png";
@@ -51,22 +52,24 @@ export default function NavBar() {
             </Link>
           </li>
           {logedUser?.name ? (
-            <li onClick={handleToggle}>{logedUser.name}</li>
+            <li className="nameUser" onClick={handleToggle}>
+              {logedUser.name}
+            </li>
           ) : (
             ""
           )}
 
           {toglle ? (
-            <CiLogout className="iconHome" onClick={handleLogOut} />
+            <CiLogout className="iconLogOut" onClick={handleLogOut} />
           ) : (
             ""
           )}
         </ul>
       </div>
-      <div>
-        <IoMdNotificationsOutline />
-        <LuMessageSquare />
-        <IoSettingsOutline />
+      <div className="iconsContainer">
+        <IoMdNotificationsOutline className="iconRignNavBar" />
+        <LuMessageSquare className="iconRignNavBar" />
+        <CiSettings className="iconSetting" />
       </div>
     </div>
   );

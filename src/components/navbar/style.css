@@ -48,3 +48,36 @@ width: 15vw;
 
   fill: #a0a0a0; 
 }
+.nameUser{
+  cursor: pointer;
+  display: flex;
+ 
+}
+.iconsContainer{
+  display: flex;
+  margin-right: 5rem;
+  height: 100%;
+  align-items: center;
+  gap:  1.5rem;
+}
+.iconRignNavBar{
+ font-size: 2rem;
+ color:  #05f;
+ cursor: pointer;
+}
+.iconSetting{
+  font-size: 2rem;
+  color:  #05f;
+  cursor: pointer;
+  animation: rotateRoute 6s linear infinite reverse;
+
+
+}
+@keyframes rotateRoute {
+  from {
+    transform:  rotate(0deg);
+  }
+  to {
+    transform:  rotate(360deg);
+  }
+}

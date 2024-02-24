@@ -12,9 +12,10 @@ import { UserContext } from "./context/UserProvider";
 function App() {
   const { logedUser } = useContext(UserContext);
   const [user, setUser] = useState({});
+
   useEffect(() => {
     setUser(logedUser);
-  }, []);
+  }, [logedUser]);
   console.log(user);
   return (
     <BrowserRouter>
