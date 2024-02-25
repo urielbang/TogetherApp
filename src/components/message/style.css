@@ -10,6 +10,7 @@
   background-color: rgba(33, 37, 41, 0.108);
   border-radius: 1rem;
   display: flex;
+
   flex-direction: column;
 }
 .commentContent {

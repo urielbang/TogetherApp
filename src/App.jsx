@@ -6,20 +6,15 @@ import Auth from "./pages/Auth";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import Account from "./pages/Account";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { UserContext } from "./context/UserProvider";
 
 function App() {
   const { logedUser } = useContext(UserContext);
-  const [user, setUser] = useState({});
 
-  useEffect(() => {
-    setUser(logedUser);
-  }, [logedUser]);
-  console.log(user);
   return (
     <BrowserRouter>
-      {user.email ? (
+      {logedUser?.email ? (
         <div className="containerApp">
           <NavBar />
           <SideBar />
@@ -35,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       )}
     </BrowserRouter>

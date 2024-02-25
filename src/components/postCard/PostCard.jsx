@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserProvider";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
@@ -6,16 +6,24 @@ import { APIBaseUrl } from "../../config/index";
 import { SlOptions } from "react-icons/sl";
 import { FaRegUserCircle } from "react-icons/fa";
 import MessageCard from "../message/MessageCard";
+import { FaRegComment } from "react-icons/fa";
+import LikeCard from "../like/LikeCard";
 
 import "./style.css";
 import axios from "axios";
 
 export default function PostCard({ post }) {
   const [toglle, seToglle] = useState(false);
+  const [toglleComments, setToglleCommnts] = useState(false);
+  const [comments, setCommnts] = useState([]);
   const [comment, setComment] = useState({});
+  const [commentsLength, setCommenLength] = useState(post.comments.length);
 
   const { logedUser } = useContext(UserContext);
 
+  const toggleSgowComments = () => {
+    setToglleCommnts(!toglleComments);
+  };
   const handleToggle = () => {
     seToglle(!toglle);
   };
@@ -49,16 +57,24 @@ export default function PostCard({ post }) {
 
     return `${minutes} Minutes ago`;
   };
+
+  useEffect(() => {
+    setCommnts(post.comments);
+  }, []);
   const handleSubmitComment = async (e) => {
     e.preventDefault();
     const body = { ...comment, user: logedUser._id, post: post._id };
     const token = localStorage.getItem("token");
     try {
-      await axios.post(`${APIBaseUrl}comments`, body, {
+      const res = await axios.post(`${APIBaseUrl}comments`, body, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      const data = await res.data;
+      setCommnts([...post.comments, { ...data }]);
+      setCommenLength(commentsLength + 1);
+      e.target[0].value = "";
     } catch (error) {
       console.log(error);
     }
@@ -119,10 +135,25 @@ export default function PostCard({ post }) {
           </form>
         </div>
         <div className="containerComment">
-          {post.comments?.map((comment) => {
-            return <MessageCard key={comment._id} comment={comment} />;
-          })}
+          <div className="commentIconAndNum">
+            {" "}
+            <FaRegComment
+              onClick={toggleSgowComments}
+              className="iconComment"
+            />
+            <span>{commentsLength} comments</span>
+          </div>
+          <div>
+            {" "}
+            <LikeCard postId={post._id} />
+          </div>
         </div>
+
+        {toglleComments
+          ? comments?.map((comment) => {
+              return <MessageCard key={comment._id} comment={comment} />;
+            })
+          : ""}
       </div>
     </div>
   );

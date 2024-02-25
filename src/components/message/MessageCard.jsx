@@ -12,11 +12,8 @@ export default function MessageCard({ comment }) {
     try {
       const res = await axios.get(`${APIBaseUrl}users/${comment.user}`);
       const data = await res.data;
-      console.log(data);
       setUser(data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   useEffect(() => {
     getUserById();

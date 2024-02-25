@@ -19,7 +19,10 @@ export default function UserProvider({ children }) {
       inputData
     );
 
+    setLogedUser(resUser.data.userFound);
+
     localStorage.setItem("token", resUser.data.token);
+    // location.reload();
   };
 
   const getUser = async () => {

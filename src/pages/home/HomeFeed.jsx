@@ -15,35 +15,44 @@ export default function HomeFeed() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
+    try {
+      const token = localStorage.getItem("token");
 
-    const res = await axios.post(
-      `${APIBaseUrl}posts`,
-      { ...centent },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      const res = await axios.post(
+        `${APIBaseUrl}posts`,
+        { ...centent },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (image.name) {
+        const formData = new FormData();
+        formData.append("postImage", image);
+
+        const resImg = await axios.post(
+          `${APIBaseUrl}posts/image/${res.data._id}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        await resImg.data;
+
+        const data = await res.data;
+        setPosts([...posts, data].reverse());
       }
-    );
-
-    const formData = new FormData();
-    formData.append("postImage", image);
-
-    const resImg = await axios.post(
-      `${APIBaseUrl}posts/image/${res.data._id}`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-    const dataPicture = await resImg.data;
-    console.log(dataPicture);
-
-    const data = await res.data;
-    setPosts([...posts, data].reverse());
+      const data = await res.data;
+      setPosts([...posts, data].reverse());
+      e.target[0].value = "";
+      e.target[1].value = "";
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleChange = (e) => {
     setContent({
@@ -65,7 +74,6 @@ export default function HomeFeed() {
   };
   useEffect(() => {
     fetcPosts();
-    console.log(posts);
   }, []);
 
   return (

@@ -1,0 +1,33 @@
+.like-button {
+  cursor: pointer;
+
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.7rem;
+  transition: transform 0.2s ease;
+}
+
+.liked {
+  color: #007bff;
+}
+
+.bounce {
+  animation: bounce 0.7s;
+}
+
+@keyframes bounce {
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
