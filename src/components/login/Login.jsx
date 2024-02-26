@@ -23,7 +23,10 @@ export default function Login() {
             placeholder="Password"
             name="password"
           />
-          <button type="submit"> Login!</button>
+          <button className="btn-register" type="submit">
+            {" "}
+            Login!
+          </button>
           <Link to="/register">not have account?</Link>
         </form>
       </div>

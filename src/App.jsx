@@ -8,6 +8,7 @@ import Register from "./components/register/Register";
 import Account from "./pages/Account";
 import { useContext } from "react";
 import { UserContext } from "./context/UserProvider";
+import Profile from "./components/profile/Profile";
 
 function App() {
   const { logedUser } = useContext(UserContext);
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/profile/:id" element={<Profile />} />
           </Routes>
         </div>
       ) : (

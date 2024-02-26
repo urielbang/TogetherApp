@@ -11,6 +11,7 @@ import LikeCard from "../like/LikeCard";
 
 import "./style.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function PostCard({ post }) {
   const [toglle, seToglle] = useState(false);
@@ -88,8 +89,12 @@ export default function PostCard({ post }) {
   return (
     <div className="cardPost">
       <div className="haederCard">
-        <div>
-          <p>{post.user?.name}</p>
+        <div className="containerHeadPost">
+          <Link to={`profile/${post.user?._id}`}>
+            {" "}
+            <img src={post.user?.imageUrl} />
+          </Link>
+          <span>{post.user?.name}</span>
           <span>{dateToTimeFromNow(post.createdAt)}</span>
           <span> {post.privacy}</span>
         </div>

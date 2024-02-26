@@ -10,7 +10,7 @@ import { LuMessageSquare } from "react-icons/lu";
 import { CiSettings } from "react-icons/ci";
 
 import homeImg from "../../assets/wired-flat-63-home.gif";
-import userImg from "../../assets/man.png";
+
 import logIn from "../../assets/login.png";
 import { CiLogout } from "react-icons/ci";
 
@@ -48,7 +48,7 @@ export default function NavBar() {
           </li>
           <li>
             <Link to="/account">
-              <img className="iconHome" src={userImg} />
+              <img className="iconHome" src={logedUser?.imageUrl} />
             </Link>
           </li>
           {logedUser?.name ? (

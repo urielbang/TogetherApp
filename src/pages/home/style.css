@@ -28,8 +28,7 @@
   box-shadow: 0 0 0 2px rgba(102, 88, 246, 0.2);
   outline: none;
 }
-
-button {
+.btn-post {
   width: 100%;
   margin: 2rem;
   padding: 12px 20px;
@@ -41,11 +40,11 @@ button {
   transition: background-color 0.3s;
 }
 
-button:hover {
+.btn-post:hover {
   background-color: #5848c2;
 }
 
-button:active {
+.btn-post:active {
   background-color: #4a3ea4;
 }
 
