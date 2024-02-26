@@ -74,7 +74,7 @@ export default function HomeFeed() {
   };
   useEffect(() => {
     fetcPosts();
-  }, []);
+  }, [posts]);
 
   return (
     <div className="main">
@@ -104,7 +104,7 @@ export default function HomeFeed() {
 
         <div className="containerCardsPosts">
           {posts.map((post, i) => {
-            return <PostCard key={i} post={post} />;
+            return <PostCard key={i} post={post} setPosts={setPosts} />;
           })}
         </div>
       </div>

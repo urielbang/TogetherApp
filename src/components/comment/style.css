@@ -23,3 +23,12 @@
 
   width: 100%;
 }
+.iconUserComment {
+  width: 3vw;
+  height: 10vh;
+  margin: 0;
+}
+.userImg {
+  display: flex;
+  width: 5vw;
+}

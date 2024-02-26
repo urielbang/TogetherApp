@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import img from "../../assets/share.png";
+import img from "../../assets/icon_2_transparent.png";
 import { UserContext } from "../../context/UserProvider";
 import "./style.css";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
@@ -29,7 +29,7 @@ export default function NavBar() {
   };
   return (
     <div className="navBar">
-      <img src={img} />
+      <img className="iconAppNav" src={img} />
       <div className="navBarMiddleIcons">
         <div className="search-box">
           <HiMiniMagnifyingGlass className="search-icon" />
@@ -42,22 +42,15 @@ export default function NavBar() {
             </Link>
           </li>
           <li>
-            <Link to="/auth">
-              <img className="iconHome" src={logIn} />
-            </Link>
+            <img className="iconHome" src={logIn} onClick={handleLogOut} />
           </li>
           <li>
             <Link to="/account">
               <img className="iconHome" src={logedUser?.imageUrl} />
             </Link>
           </li>
-          {logedUser?.name ? (
-            <li className="nameUser" onClick={handleToggle}>
-              {logedUser.name}
-            </li>
-          ) : (
-            ""
-          )}
+
+          <li className="nameUser">{logedUser.name}</li>
 
           {toglle ? (
             <CiLogout className="iconLogOut" onClick={handleLogOut} />

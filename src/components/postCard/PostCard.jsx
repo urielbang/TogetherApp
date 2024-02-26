@@ -5,15 +5,15 @@ import { MdEdit } from "react-icons/md";
 import { APIBaseUrl } from "../../config/index";
 import { SlOptions } from "react-icons/sl";
 import { FaRegUserCircle } from "react-icons/fa";
-import MessageCard from "../message/MessageCard";
 import { FaRegComment } from "react-icons/fa";
 import LikeCard from "../like/LikeCard";
 
 import "./style.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import CommentCard from "../comment/CommentCard";
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, setPosts }) {
   const [toglle, seToglle] = useState(false);
   const [toglleComments, setToglleCommnts] = useState(false);
   const [comments, setCommnts] = useState([]);
@@ -39,9 +39,20 @@ export default function PostCard({ post }) {
         },
       });
       console.log("deleted");
-      location.reload();
+      fecthPosts();
     } catch (error) {
       console.log(error);
+    }
+  };
+  const fecthPosts = async () => {
+    try {
+      const res = await axios.get(`${APIBaseUrl}posts`);
+      const data = await res.data;
+
+      const dataSort = data.reverse();
+      setPosts(dataSort);
+    } catch (err) {
+      console.log(err);
     }
   };
   const dateToTimeFromNow = (createdAt) => {
@@ -159,7 +170,7 @@ export default function PostCard({ post }) {
 
         {toglleComments
           ? comments?.map((comment) => {
-              return <MessageCard key={comment._id} comment={comment} />;
+              return <CommentCard key={comment._id} comment={comment} />;
             })
           : ""}
       </div>

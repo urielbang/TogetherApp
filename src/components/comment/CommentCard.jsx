@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./style.css";
 import { useState } from "react";
 import axios from "axios";
 import { APIBaseUrl } from "../../config";
 
-export default function MessageCard({ comment }) {
+export default function CommentCard({ comment }) {
   const [user, setUser] = useState({});
 
   const getUserById = async () => {
@@ -20,7 +20,11 @@ export default function MessageCard({ comment }) {
   }, []);
   return (
     <div className="cardMessage">
-      <FaUser className="iconUserComment" />
+      <Link className="userImg" to={`profile/${user?._id}`}>
+        {" "}
+        <img className="iconUserComment" src={user?.imageUrl} />
+      </Link>
+
       <div className="messageName">
         <div className="textAndDate">
           <span>{user ? user.name : ""}</span>

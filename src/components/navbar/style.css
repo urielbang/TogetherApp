@@ -14,8 +14,16 @@
   padding: 1rem;
   justify-content: space-between;
 }
+.navBar .iconAppNav {
+  width: 7vw;
+  height: 12vh;
+
+
+  align-self: center;
+}
 .iconHome {
   width: 3.5vw;
+cursor: pointer;
 }
 .navBarMiddleIcons {
   display: flex;

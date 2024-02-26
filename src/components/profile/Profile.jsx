@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { APIBaseUrl } from "../../config";
+import { IoMdArrowRoundBack } from "react-icons/io";
+
+import "./style.css";
 
 export default function Profile() {
   const [currentUser, setCurrentUser] = useState({});
@@ -21,6 +24,11 @@ export default function Profile() {
   return (
     <div className="main">
       <div className="containerAcount">
+        <div className="goBack">
+          <Link to="/">
+            <IoMdArrowRoundBack /> back
+          </Link>
+        </div>
         <h1> Name:{currentUser.name}</h1>
         <h4>email {currentUser.email}</h4>
         <img src={currentUser.imageUrl} />

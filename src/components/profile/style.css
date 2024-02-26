@@ -1,0 +1,8 @@
+.goBack {
+  width: 50vw;
+  display: flex;
+}
+.goBack a {
+  text-decoration: none;
+  color: black;
+}
