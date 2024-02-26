@@ -17,6 +17,7 @@ export default function PostCard({ post }) {
   const [toglleComments, setToglleCommnts] = useState(false);
   const [comments, setCommnts] = useState([]);
   const [comment, setComment] = useState({});
+
   const [commentsLength, setCommenLength] = useState(post.comments.length);
 
   const { logedUser } = useContext(UserContext);
@@ -61,6 +62,7 @@ export default function PostCard({ post }) {
   useEffect(() => {
     setCommnts(post.comments);
   }, []);
+
   const handleSubmitComment = async (e) => {
     e.preventDefault();
     const body = { ...comment, user: logedUser._id, post: post._id };
@@ -82,6 +84,7 @@ export default function PostCard({ post }) {
   const handleChange = (e) => {
     setComment({ ...comment, content: e.target.value });
   };
+
   return (
     <div className="cardPost">
       <div className="haederCard">
@@ -143,9 +146,9 @@ export default function PostCard({ post }) {
             />
             <span>{commentsLength} comments</span>
           </div>
-          <div>
+          <div className="conainerLikeAndNum">
             {" "}
-            <LikeCard postId={post._id} />
+            <LikeCard postId={post._id} likes={post.likes} />
           </div>
         </div>
 

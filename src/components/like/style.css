@@ -1,12 +1,13 @@
 .like-button {
-  cursor: pointer;
-
+  display: flex;
   align-items: center;
+  gap: 2rem;
 }
 
 .icon {
   font-size: 1.7rem;
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .liked {
@@ -30,4 +31,8 @@
   60% {
     transform: translateY(-10px);
   }
+}
+.containerLikeCard {
+  display: flex;
+  flex-direction: column;
 }
