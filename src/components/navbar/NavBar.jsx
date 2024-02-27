@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Link } from "react-router-dom";
 import img from "../../assets/icon_2_transparent.png";
 import { UserContext } from "../../context/UserProvider";
@@ -10,9 +9,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { LuMessageSquare } from "react-icons/lu";
 import { CiSettings } from "react-icons/ci";
 import { APIBaseUrl } from "../../config";
-
 import homeImg from "../../assets/wired-flat-63-home.gif";
-
 import logIn from "../../assets/login.png";
 import axios from "axios";
 
@@ -51,6 +48,8 @@ export default function NavBar() {
     });
 
     navigate(`/profile/${findId[0]._id}`);
+
+    e.target[0].value = "";
   };
 
   useEffect(() => {
@@ -99,7 +98,11 @@ export default function NavBar() {
       </div>
       <div className="iconsContainer">
         <IoMdNotificationsOutline className="iconRignNavBar" />
-        <LuMessageSquare className="iconRignNavBar" />
+        <Link to="/chat">
+          {" "}
+          <LuMessageSquare className="iconRignNavBar" />
+        </Link>
+
         <CiSettings className="iconSetting" />
       </div>
     </div>

@@ -9,6 +9,7 @@ import Account from "./pages/Account";
 import { useContext } from "react";
 import { UserContext } from "./context/UserProvider";
 import Profile from "./components/profile/Profile";
+import Chat from "./pages/chat/Chat";
 
 function App() {
   const { logedUser } = useContext(UserContext);
@@ -26,6 +27,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/account" element={<Account />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/chat" element={<Chat />} />
           </Routes>
         </div>
       ) : (
