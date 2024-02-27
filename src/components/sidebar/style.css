@@ -1,0 +1,16 @@
+.newDeedIcons {
+  background-color: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 1.5rem;
+  padding: 0.8rem;
+}
+.listFeedIcons {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.listFeedIcons li {
+  display: flex;
+  gap: 1rem;
+}

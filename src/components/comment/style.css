@@ -25,10 +25,12 @@
 }
 .iconUserComment {
   width: 3vw;
-  height: 10vh;
-  margin: 0;
+  height: 8vh;
 }
 .userImg {
   display: flex;
-  width: 5vw;
+  width: 3vw;
+}
+.userCommentImg {
+  height: 5vh;
 }

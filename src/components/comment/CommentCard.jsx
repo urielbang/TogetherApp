@@ -22,7 +22,7 @@ export default function CommentCard({ comment }) {
     <div className="cardMessage">
       <Link className="userImg" to={`profile/${user?._id}`}>
         {" "}
-        <img className="iconUserComment" src={user?.imageUrl} />
+        <img className="userCommentImg" src={user?.imageUrl} />
       </Link>
 
       <div className="messageName">
