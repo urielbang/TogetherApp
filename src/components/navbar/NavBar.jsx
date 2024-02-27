@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import img from "../../assets/icon_2_transparent.png";
 import { UserContext } from "../../context/UserProvider";
 import "./style.css";
@@ -8,32 +9,75 @@ import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { LuMessageSquare } from "react-icons/lu";
 import { CiSettings } from "react-icons/ci";
+import { APIBaseUrl } from "../../config";
 
 import homeImg from "../../assets/wired-flat-63-home.gif";
 
 import logIn from "../../assets/login.png";
-import { CiLogout } from "react-icons/ci";
+import axios from "axios";
 
 export default function NavBar() {
-  const { logedUser, setLogedUser } = useContext(UserContext);
-  const [toglle, setToglle] = useState(false);
+  const [usersName, setUsersName] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState({});
 
-  const handleToggle = () => {
-    setToglle(!toglle);
-  };
+  const { logedUser, setLogedUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
     setLogedUser({});
-    setToglle(false);
   };
+  const handleChange = (e) => {
+    setSelectedUser(e.target.value);
+  };
+  const fetchUSers = async () => {
+    const res = axios.get(`${APIBaseUrl}users`);
+    const data = (await res).data;
+
+    setUsers(data);
+
+    const names = data.map((user) => {
+      return user.name;
+    });
+    setUsersName(names);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const findId = users.filter((user) => {
+      return user.name == selectedUser;
+    });
+
+    navigate(`/profile/${findId[0]._id}`);
+  };
+
+  useEffect(() => {
+    fetchUSers();
+  }, []);
   return (
     <div className="navBar">
       <img className="iconAppNav" src={img} />
       <div className="navBarMiddleIcons">
         <div className="search-box">
           <HiMiniMagnifyingGlass className="search-icon" />
-          <input type="text" className="search-input" placeholder="Search..." />
+          <form onSubmit={handleSubmit}>
+            <input
+              onChange={handleChange}
+              type="text"
+              className="search-input"
+              placeholder="Search profile..."
+              list="data"
+            />
+            <datalist id="data">
+              <select>
+                {usersName.map((name, i) => {
+                  return <option key={i}>{name}</option>;
+                })}
+              </select>
+            </datalist>
+          </form>
         </div>
         <ul>
           <li>
@@ -51,12 +95,6 @@ export default function NavBar() {
           </li>
 
           <li className="nameUser">{logedUser.name}</li>
-
-          {toglle ? (
-            <CiLogout className="iconLogOut" onClick={handleLogOut} />
-          ) : (
-            ""
-          )}
         </ul>
       </div>
       <div className="iconsContainer">
