@@ -89,3 +89,42 @@ width: 15vw;
     transform:  rotate(360deg);
   }
 }
+.formSearchUsers{
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+}
+
+.data{
+ 
+display: none;
+
+ 
+}
+.dataUsers{
+  border-radius: 1rem;
+  background-color: #f0f0f0;   display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+ 
+  position: absolute;
+ 
+  overflow-y: scroll;
+  top: 88%;
+  
+
+}
+.dataUsers a{
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  
+}
+.dataUsers a:hover{
+  background-color: white;
+}

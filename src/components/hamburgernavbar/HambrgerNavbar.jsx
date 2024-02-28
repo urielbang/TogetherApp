@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-export default function Chat() {
+export default function HambrgerNavbar() {
   return (
     <nav role="navigation">
       <div id="menuToggle">

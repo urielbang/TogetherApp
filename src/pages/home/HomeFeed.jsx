@@ -6,12 +6,15 @@ import "./style.css";
 import { APIBaseUrl } from "../../config/index";
 import PostCard from "../../components/postCard/PostCard";
 
-export default function HomeFeed() {
+export default function HomeFeed({ setToglle, toggle }) {
   const [posts, setPosts] = useState([]);
   const [centent, setContent] = useState({});
   const [image, setImage] = useState({});
   const { logedUser } = useContext(UserContext);
 
+  const handleToglle = () => {
+    setToglle(false);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -77,7 +80,7 @@ export default function HomeFeed() {
   }, [posts]);
 
   return (
-    <div className="main">
+    <div className="main" onClick={handleToglle}>
       <div className="createPostContainer">
         <form onSubmit={handleSubmit} className="formPost">
           <textarea

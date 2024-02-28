@@ -6,28 +6,36 @@ import Auth from "./pages/Auth";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import Account from "./pages/Account";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "./context/UserProvider";
 import Profile from "./components/profile/Profile";
-import Chat from "./pages/chat/Chat";
+
+import Message from "./pages/messagesPage/Message";
 
 function App() {
   const { logedUser } = useContext(UserContext);
+  const [toggle, setToglle] = useState(false);
 
   return (
     <BrowserRouter>
       {logedUser?.email ? (
         <div className="containerApp">
-          <NavBar />
+          <NavBar toggle={toggle} setToglle={setToglle} />
           <SideBar />
+          <Message />
           <Routes>
-            <Route path="/" element={<HomeFeed />} />
+            <Route
+              path="/"
+              element={<HomeFeed setToglle={setToglle} toggle={toggle} />}
+            />
             <Route path="/auth" element={<Auth />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/account" element={<Account />} />
-            <Route path="/profile/:id" element={<Profile />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route
+              path="/profile/:id"
+              element={<Profile setToglle={setToglle} toggle={toggle} />}
+            />
           </Routes>
         </div>
       ) : (

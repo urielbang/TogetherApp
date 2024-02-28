@@ -6,7 +6,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 import "./style.css";
 
-export default function Profile() {
+export default function Profile({ setToglle }) {
   const [currentUser, setCurrentUser] = useState({});
   const { id } = useParams();
 
@@ -16,13 +16,18 @@ export default function Profile() {
     setCurrentUser(data);
   };
 
+  const handleToglle = () => {
+    setToglle(false);
+  };
+
   useEffect(() => {
     fetchUSerById();
+    setToglle(false);
   }, []);
 
   console.log(currentUser);
   return (
-    <div className="main">
+    <div className="main" onClick={handleToglle}>
       <div className="containerAcount">
         <div className="goBack">
           <Link to="/">

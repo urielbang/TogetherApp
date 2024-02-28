@@ -13,14 +13,23 @@ import homeImg from "../../assets/wired-flat-63-home.gif";
 import logIn from "../../assets/login.png";
 import axios from "axios";
 
-export default function NavBar() {
+export default function NavBar({ toggle, setToglle }) {
   const [usersName, setUsersName] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
+  const [toggleSideChat, setToglleChat] = useState(false);
 
   const { logedUser, setLogedUser } = useContext(UserContext);
 
   const navigate = useNavigate();
+
+  const toglleChatMessages = () => {
+    setToglleChat(!toggleSideChat);
+  };
+
+  const handleToggleSearch = () => {
+    setToglle(true);
+  };
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -61,21 +70,24 @@ export default function NavBar() {
       <div className="navBarMiddleIcons">
         <div className="search-box">
           <HiMiniMagnifyingGlass className="search-icon" />
-          <form onSubmit={handleSubmit}>
+          <form className="formSearchUsers" onSubmit={handleSubmit}>
             <input
+              onClick={handleToggleSearch}
               onChange={handleChange}
               type="text"
               className="search-input"
               placeholder="Search profile..."
               list="data"
             />
-            <datalist id="data">
-              <select>
-                {usersName.map((name, i) => {
-                  return <option key={i}>{name}</option>;
-                })}
-              </select>
-            </datalist>
+            <div className={toggle == true ? "dataUsers" : "data"}>
+              {usersName.map((name, i) => {
+                return (
+                  <Link key={i} to={`/profile/${users[i]._id}`}>
+                    {name}
+                  </Link>
+                );
+              })}
+            </div>
           </form>
         </div>
         <ul>
@@ -100,7 +112,10 @@ export default function NavBar() {
         <IoMdNotificationsOutline className="iconRignNavBar" />
         <Link to="/chat">
           {" "}
-          <LuMessageSquare className="iconRignNavBar" />
+          <LuMessageSquare
+            className="iconRignNavBar"
+            onClick={toglleChatMessages}
+          />
         </Link>
 
         <CiSettings className="iconSetting" />
