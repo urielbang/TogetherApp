@@ -13,4 +13,59 @@
 .listFeedIcons li {
   display: flex;
   gap: 1rem;
+  cursor: pointer;
+  align-items: center;
+}
+.listFeedIcons li span:hover {
+  color: #021b79;
+}
+.Newsfeed {
+  background: linear-gradient(to right, #0575e6, #021b79);
+  font-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+}
+.textStyle {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #888;
+  transition: all 0.2s ease;
+  margin-right: auto;
+  padding-right: 10px;
+}
+.budgesicon {
+  background: linear-gradient(to right, #e44d26, #f16529);
+  font-size: 2rem;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
+}
+.exploreIcon {
+  background: linear-gradient(to right, #f2994a, #f2c94c);
+  font-size: 2rem;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
+}
+.groupes {
+  background: linear-gradient(to right, #ee0979, #ff6a00);
+  font-size: 2rem;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
+}
+.authorProfile {
+  font-size: 2rem;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #05f, #09f);
+}
+.containerSideBar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
 }

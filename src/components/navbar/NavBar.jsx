@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import img from "../../assets/icon_2_transparent.png";
 import { UserContext } from "../../context/UserProvider";
@@ -14,14 +14,15 @@ import logIn from "../../assets/login.png";
 import axios from "axios";
 
 export default function NavBar({ toggle, setToglle }) {
-  const [usersName, setUsersName] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [userNames, setUsersName] = useState(null);
+
   const [selectedUser, setSelectedUser] = useState({});
   const [toggleSideChat, setToglleChat] = useState(false);
+  const [chatToglle, setChatToglle] = useState(false);
 
   const { logedUser, setLogedUser } = useContext(UserContext);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const toglleChatMessages = () => {
     setToglleChat(!toggleSideChat);
@@ -35,35 +36,25 @@ export default function NavBar({ toggle, setToglle }) {
     localStorage.removeItem("token");
     setLogedUser({});
   };
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     setSelectedUser(e.target.value);
-  };
-  const fetchUSers = async () => {
-    const res = axios.get(`${APIBaseUrl}users`);
-    const data = (await res).data;
 
-    setUsers(data);
+    if (e.target.value.length) {
+      const names = await axios.get(
+        `${APIBaseUrl}users/search/${e.target.value}`
+      );
+      const data = await names.data;
 
-    const names = data.map((user) => {
-      return user.name;
-    });
-    setUsersName(names);
+      setUsersName(data);
+    }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const findId = users.filter((user) => {
-      return user.name == selectedUser;
-    });
-
-    navigate(`/profile/${findId[0]._id}`);
 
     e.target[0].value = "";
   };
 
-  useEffect(() => {
-    fetchUSers();
-  }, []);
   return (
     <div className="navBar">
       <img className="iconAppNav" src={img} />
@@ -80,13 +71,15 @@ export default function NavBar({ toggle, setToglle }) {
               list="data"
             />
             <div className={toggle == true ? "dataUsers" : "data"}>
-              {usersName.map((name, i) => {
-                return (
-                  <Link key={i} to={`/profile/${users[i]._id}`}>
-                    {name}
-                  </Link>
-                );
-              })}
+              {userNames
+                ? userNames?.map((user, i) => {
+                    return (
+                      <Link key={i} to={`/profile/${user._id}`}>
+                        {user.name}
+                      </Link>
+                    );
+                  })
+                : ""}
             </div>
           </form>
         </div>
@@ -110,13 +103,11 @@ export default function NavBar({ toggle, setToglle }) {
       </div>
       <div className="iconsContainer">
         <IoMdNotificationsOutline className="iconRignNavBar" />
-        <Link to="/chat">
-          {" "}
-          <LuMessageSquare
-            className="iconRignNavBar"
-            onClick={toglleChatMessages}
-          />
-        </Link>
+
+        <LuMessageSquare
+          className="iconRignNavBar"
+          onClick={toglleChatMessages}
+        />
 
         <CiSettings className="iconSetting" />
       </div>

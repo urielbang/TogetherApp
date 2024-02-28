@@ -6,6 +6,8 @@ import { APIBaseUrl } from "../../config/index";
 import { SlOptions } from "react-icons/sl";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
+import { CiShare2 } from "react-icons/ci";
+
 import LikeCard from "../like/LikeCard";
 
 import "./style.css";
@@ -105,9 +107,12 @@ export default function PostCard({ post, setPosts }) {
             {" "}
             <img src={post.user?.imageUrl} />
           </Link>
-          <span>{post.user?.name}</span>
-          <span>{dateToTimeFromNow(post.createdAt)}</span>
-          <span> {post.privacy}</span>
+          <div className="timeAndName">
+            <span>{post.user?.name}</span>
+            <span className="timeHeader">
+              {dateToTimeFromNow(post.createdAt)}
+            </span>
+          </div>
         </div>
         <div className="toggleContainer">
           <SlOptions onClick={handleToggle} className="iconOptions" />
@@ -130,16 +135,18 @@ export default function PostCard({ post, setPosts }) {
           )}
         </div>
       </div>
-      <div className="statusContext">
-        {post.imageUrl ? <img src={post.imageUrl} /> : ""}
+      <div className="postContext">
+        <div className="containerStatus">
+          <p className="status">{post.content}</p>
+        </div>
+        {post.imageUrl ? <img className="imgPost" src={post.imageUrl} /> : ""}
         {post.imageUrl?.includes("mp4") ? (
-          <video autoPlay controls>
+          <video className="imgPost" autoPlay controls>
             <source src={post.imageUrl} type="video/mp4" />
           </video>
         ) : (
           ""
         )}
-        <span className="status">{post.content}</span>
       </div>
       <div className="containerMessages">
         <div className="formCommentContainer">
@@ -165,6 +172,10 @@ export default function PostCard({ post, setPosts }) {
           <div className="conainerLikeAndNum">
             {" "}
             <LikeCard postId={post._id} likes={post.likes} />
+          </div>
+          <div className="shareClass">
+            {" "}
+            <CiShare2 className="iconComment" />
           </div>
         </div>
 

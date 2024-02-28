@@ -1,7 +1,8 @@
 body {
   margin: 0;
   background-color: #fbfcfe;
-  font-family: Montserrat, sans-serif;
+  font-family: sans-serif;
+  overflow-x: hidden;
 }
 .containerApp {
   min-height: 100vh;
