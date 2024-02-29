@@ -10,11 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.3",
+    "@svgr/webpack": "^8.1.0",
     "axios": "^1.6.7",
+    "framer-motion": "^11.0.6",
+    "gl-matrix": "^3.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
-    "react-router-dom": "^6.22.1"
+    "react-router-dom": "^6.22.1",
+    "react-spring": "^9.7.3",
+    "sass": "^1.71.1",
+    "vec-la": "^1.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

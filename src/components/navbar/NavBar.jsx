@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import img from "../../assets/icon_2_transparent.png";
+import img from "../../assets/together2.png";
 import { UserContext } from "../../context/UserProvider";
 import "./style.css";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";

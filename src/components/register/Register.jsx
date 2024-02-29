@@ -44,6 +44,7 @@ export default function SignIn() {
   };
   return (
     <div className="main">
+      <div className="picLogin"></div>
       <div className="containerRegister">
         <h1>Sign in</h1>
         <form className="formRegister" onSubmit={handleSubmit}>
