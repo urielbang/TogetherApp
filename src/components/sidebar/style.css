@@ -67,5 +67,76 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 2rem;
   margin-top: 2rem;
+}
+.txtSpan {
+  color: #adb5bd;
+}
+.iconMoer {
+  font-size: 2rem;
+  color: #05f;
+  cursor: pointer;
+}
+.newDeedIcons ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.newDeedIcons ul li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #888;
+  transition: all 0.2s ease;
+  margin-right: auto;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.newDeedIcons ul li:hover {
+  color: #021b79;
+}
+.AccountIcons ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.AccountIcons ul li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #888;
+  transition: all 0.2s ease;
+  margin-right: auto;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.AccountIcons ul li:hover {
+  color: #021b79;
+}
+.acoountIcon {
+  font-size: 2rem;
+}
+.containerPublic {
+  display: flex;
+
+  gap: 0.5rem;
+  align-items: center;
+  margin-right: 2rem;
+}
+.containerPublic select {
+  border: none;
+  color: #888;
+  cursor: pointer;
+}
+.containerPublic option {
+  border: none;
 }

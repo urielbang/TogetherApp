@@ -3,6 +3,21 @@
   flex-direction: column;
   margin-top: 3rem;
 }
+.postCreate {
+  box-shadow: 0 0 0 2px rgba(102, 88, 246, 0.2);
+  background-color: white;
+  margin: 2rem;
+
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.headPostCreate {
+  background-color: rgb(185, 200, 222);
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .formPost {
   display: flex;
   flex-direction: column;
@@ -50,15 +65,15 @@
 
 .inputPost {
   width: 30vw;
-  height: 6vw;
+  height: 20vh;
 
   overflow: auto;
-  width: 100%;
-  padding: 12px 20px;
+  width: 80%;
+
   margin: 8px 0;
-  display: inline-block;
+
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 1rem;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -73,5 +88,39 @@
 .containerCardsPosts {
   display: flex;
   flex-direction: column;
+
   gap: 2rem;
+}
+.iconClose {
+  margin-left: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.iconEdit {
+  margin-right: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.profilePost {
+  display: flex;
+  justify-content: space-between;
+}
+.profile {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+}
+.prfilePic {
+  width: 5vw;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+.profile p {
+  margin: 0;
+  font-weight: bold;
+}
+.profile span {
+  color: #888;
+  font-size: small;
 }

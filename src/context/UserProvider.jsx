@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { APIBaseUrl } from "../config";
 
 export const UserContext = createContext();
 
@@ -14,10 +15,7 @@ export default function UserProvider({ children }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const resUser = await axios.post(
-      "http://localhost:2000/api/v1/users/login",
-      inputData
-    );
+    const resUser = await axios.post(`${APIBaseUrl}users/login`, inputData);
 
     setLogedUser(resUser.data.userFound);
 
@@ -28,14 +26,11 @@ export default function UserProvider({ children }) {
   const getUser = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(
-        "http://localhost:2000/api/v1/users/init-user",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.get(`${APIBaseUrl}users/init-user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = await res.data;
       console.log(data);
       setLogedUser(data);

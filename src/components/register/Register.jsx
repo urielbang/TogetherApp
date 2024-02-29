@@ -11,10 +11,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:2000/api/v1/users/register",
-        inputData
-      );
+      const res = await axios.post(`${APIBaseUrl}users/register`, inputData);
 
       if (image.name) {
         const formData = new FormData();

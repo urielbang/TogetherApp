@@ -45,6 +45,7 @@ export default function PostCard({ post, setPosts }) {
     } catch (error) {
       console.log(error);
     }
+    seToglle(false);
   };
   const fecthPosts = async () => {
     try {
@@ -105,7 +106,7 @@ export default function PostCard({ post, setPosts }) {
         <div className="containerHeadPost">
           <Link to={`profile/${post.user?._id}`}>
             {" "}
-            <img src={post.user?.imageUrl} />
+            <img className="headImg" src={post.user?.imageUrl} />
           </Link>
           <div className="timeAndName">
             <span>{post.user?.name}</span>
@@ -135,7 +136,7 @@ export default function PostCard({ post, setPosts }) {
           )}
         </div>
       </div>
-      <div className="postContext">
+      <div onClick={() => seToglle(false)} className="postContext">
         <div className="containerStatus">
           <p className="status">{post.content}</p>
         </div>

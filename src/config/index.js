@@ -1,1 +1,1 @@
-export const APIBaseUrl = "http://localhost:2000/api/v1/";
+export const APIBaseUrl = "https://together-server-3.onrender.com/api/v1/";
