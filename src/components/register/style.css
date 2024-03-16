@@ -70,3 +70,8 @@
 .btn-register:active {
   background-color: #4a3ea4;
 }
+.svgClass {
+  width: 50vw;
+  height: 60vh;
+  display: flex;
+}

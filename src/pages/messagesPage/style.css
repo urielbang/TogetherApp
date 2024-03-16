@@ -2,14 +2,11 @@
   background-color: rgb(212, 255, 0);
 
   width: 50vw;
-  transform: translateX(100%);
-  right: 0;
+  transform: translateX(300%);
+  right: 0%;
   height: 50vh;
 
-  display: flex;
   position: absolute;
-  overflow: hidden;
-  transition: display 3s;
 }
 .sass:hover {
   display: none;

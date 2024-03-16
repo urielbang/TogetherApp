@@ -72,3 +72,15 @@ body {
 .containerAcount img {
   width: 15vw;
 }
+
+@media only screen and (max-width: 800px) {
+  .sideBar {
+    display: none;
+  }
+  .containerApp {
+    grid-template-columns: 20% 80%;
+    grid-template-areas:
+      "navBar navBar"
+      "main main";
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
+import { svg } from "../../assets/svgString";
 import { APIBaseUrl } from "../../config";
 
 export default function SignIn() {
@@ -41,7 +42,7 @@ export default function SignIn() {
   };
   return (
     <div className="main">
-      <div className="picLogin"></div>
+      <div className="svgClass" dangerouslySetInnerHTML={{ __html: svg }} />
       <div className="containerRegister">
         <h1>Sign in</h1>
         <form className="formRegister" onSubmit={handleSubmit}>
