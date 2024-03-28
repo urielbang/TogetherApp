@@ -12,6 +12,7 @@ import { APIBaseUrl } from "../../config";
 import homeImg from "../../assets/wired-flat-63-home.gif";
 import logIn from "../../assets/login.png";
 import axios from "axios";
+import Message from "../../pages/messagesPage/Message";
 
 export default function NavBar({ toggle, setToglle }) {
   const [userNames, setUsersName] = useState(null);
@@ -111,6 +112,7 @@ export default function NavBar({ toggle, setToglle }) {
 
         <CiSettings className="iconSetting" />
       </div>
+      <Message toggleSideChat={toggleSideChat} />
     </div>
   );
 }

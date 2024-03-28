@@ -1,16 +1,61 @@
 .sass {
-  background-color: rgb(212, 255, 0);
-
-  width: 50vw;
-  transform: translateX(300%);
-  right: 0%;
-  height: 50vh;
-
+  background-color: rgb(73, 87, 109);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: -1%;
+  z-index: 10;
+  right: 20%;
+  height: 100vh;
+  transition: right 2s;
   position: absolute;
 }
-.sass:hover {
-  display: none;
-}
+
 .active {
-  transform: translateX(0);
+  background-color: rgb(73, 87, 109);
+  flex-direction: column;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  top: -1%;
+  z-index: 10;
+  right: 100%;
+  height: 100vh;
+  transition: right 2s;
+  position: absolute;
+}
+.containerChat {
+  width: 81.5%;
+  height: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+  /* margin-right: 2rem; */
+  border: solid 1px black;
+}
+.chatApp {
+  border: solid 1px black;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.usersChat {
+  /* border: solid 1px black; */
+  width: 20%;
+
+  /* overflow: scroll; */
+  overflow-y: scroll;
+}
+.chatMessages {
+  background-color: aliceblue;
+  width: 100%;
+
+  height: 70%;
+}
+.inputChat {
+  height: 10%;
+  margin-bottom: 2rem;
 }
