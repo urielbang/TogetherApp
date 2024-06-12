@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const { handleChange, handleSubmit } = useContext(UserContext);
-  console.log(svg);
 
   return (
     <div className="main">

@@ -7,21 +7,10 @@ import "./style.css";
 import axios from "axios";
 
 export default function LikeCard({ postId, likes }) {
-  const [usersLikes, setUserLikes] = useState([]);
   const [liked, setLiked] = useState(false);
   const [animation, setAnimation] = useState("");
   const [toglle, setToglle] = useState(false);
 
-  const fetchLikesUsers = async () => {
-    const token = localStorage.getItem("token");
-    const res = await axios.get(`${APIBaseUrl}likes/${postId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await res.data;
-    setUserLikes(data);
-  };
   const { logedUser } = useContext(UserContext);
 
   const toggleLike = async () => {
@@ -45,10 +34,6 @@ export default function LikeCard({ postId, likes }) {
     setTimeout(() => setAnimation(""), 700);
   };
 
-  useEffect(() => {
-    fetchLikesUsers();
-  }, []);
-
   return (
     <div className="containerLikeCard">
       <div className="like-button" onClick={toggleLike}>
@@ -59,11 +44,6 @@ export default function LikeCard({ postId, likes }) {
           likes {likes.length} {likes.date}
         </p>
       </div>
-      {toglle
-        ? usersLikes?.map((like) => {
-            return <p key={like._id}>{like?.user.name}</p>;
-          })
-        : ""}
     </div>
   );
 }

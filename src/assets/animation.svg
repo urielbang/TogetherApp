@@ -2657,11 +2657,11 @@
 		<g>
 			<line fill="none" x1="136.654" y1="231.395" x2="287.233" y2="198.513"/>
 			<text transform="matrix(0.977 -0.2134 0 1 149.3367 226.363)" font-family="'Pathway Gothic One'" font-size="39.6581">T</text>
-			<text transform="matrix(0.977 -0.2133 0 1 161.5945 223.6863)" font-family="'Pathway Gothic One'" font-size="39.6581">R</text>
-			<text transform="matrix(0.977 -0.2133 0 1 175.5847 220.6306)" font-family="'Pathway Gothic One'" font-size="39.6581">A</text>
-			<text transform="matrix(0.977 -0.2133 0 1 190.0623 217.4695)" font-family="'Pathway Gothic One'" font-size="39.6581">V</text>
-			<text transform="matrix(0.977 -0.2133 0 1 203.6252 214.5085)" font-family="'Pathway Gothic One'" font-size="39.6581">E</text>
-			<text transform="matrix(0.977 -0.2133 0 1 215.5266 211.9099)" font-family="'Pathway Gothic One'" font-size="39.6581">L</text>
+			<text transform="matrix(0.977 -0.2133 0 1 161.5945 223.6863)" font-family="'Pathway Gothic One'" font-size="39.6581">O</text>
+			<text transform="matrix(0.977 -0.2133 0 1 175.5847 220.6306)" font-family="'Pathway Gothic One'" font-size="39.6581">G</text>
+			<text transform="matrix(0.977 -0.2133 0 1 190.0623 217.4695)" font-family="'Pathway Gothic One'" font-size="39.6581">E</text>
+			<text transform="matrix(0.977 -0.2133 0 1 203.6252 214.5085)" font-family="'Pathway Gothic One'" font-size="39.6581">T</text>
+			<text transform="matrix(0.977 -0.2133 0 1 215.5266 211.9099)" font-family="'Pathway Gothic One'" font-size="39.6581">H</text>
 			<text transform="matrix(0.977 -0.2133 0 1 226.9495 209.4148)" font-family="'Pathway Gothic One'" font-size="39.6581">E</text>
 			<text transform="matrix(0.977 -0.2133 0 1 238.844 206.8171)" font-family="'Pathway Gothic One'" font-size="39.6581">R</text>
 		</g>
@@ -2679,7 +2679,7 @@
 		<g>
 			<line fill="none" x1="213.236" y1="234.207" x2="272.375" y2="221.292"/>
 			<text transform="matrix(0.977 -0.2133 0 1 218.2815 232.2166)" font-family="'Pathway Gothic One'" font-size="15.5752"> </text>
-			<text transform="matrix(0.977 -0.2134 0 1 220.6321 231.7029)" font-family="'Pathway Gothic One'" font-size="15.5752"> </text>
+			<text transform="matrix(0.977 -0.2134 0 1 220.6321 231.7029)" font-family="'Pathway Gothic One'" font-size="15.5752"> TRGR</text>
 			<text transform="matrix(0.977 -0.2133 0 1 222.9778 231.1912)" font-family="'Pathway Gothic One'" font-size="15.5752">T</text>
 			<text transform="matrix(0.977 -0.2134 0 1 227.7874 230.1404)" font-family="'Pathway Gothic One'" font-size="15.5752">O</text>
 			<text transform="matrix(0.977 -0.2133 0 1 233.1858 228.9607)" font-family="'Pathway Gothic One'" font-size="15.5752">D</text>

@@ -44,25 +44,6 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       )}
-      {/* <div className="containerApp">
-        <NavBar toggle={toggle} setToglle={setToglle} />
-        <SideBar />
-
-        <Routes>
-          <Route
-            path="/"
-            element={<HomeFeed setToglle={setToglle} toggle={toggle} />}
-          />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/account" element={<Account />} />
-          <Route
-            path="/profile/:id"
-            element={<Profile setToglle={setToglle} toggle={toggle} />}
-          />
-        </Routes>
-      </div> */}
     </BrowserRouter>
   );
 }

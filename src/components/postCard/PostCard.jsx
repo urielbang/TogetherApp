@@ -100,6 +100,8 @@ export default function PostCard({ post, setPosts }) {
     setComment({ ...comment, content: e.target.value });
   };
 
+  const handlNotuserofPost = () => {};
+
   return (
     <div className="cardPost">
       <div className="haederCard">
@@ -116,12 +118,21 @@ export default function PostCard({ post, setPosts }) {
           </div>
         </div>
         <div className="toggleContainer">
-          <SlOptions onClick={handleToggle} className="iconOptions" />
+          <SlOptions
+            onClick={
+              logedUser?.email == post.user.email
+                ? handleToggle
+                : handlNotuserofPost
+            }
+            className="iconOptions"
+          />
           {toglle && (
             <div className="dropDown">
               <p
                 onClick={() => {
-                  handleDeletePost(post._id);
+                  if (logedUser?.email == post.user.email) {
+                    handleDeletePost(post._id);
+                  }
                 }}
               >
                 {" "}
