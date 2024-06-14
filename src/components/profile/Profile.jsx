@@ -5,6 +5,7 @@ import { APIBaseUrl } from "../../config";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 import "./style.css";
+import DeleteButton from "../delete-profile/DeleteButton";
 
 export default function Profile({ setToglle }) {
   const [currentUser, setCurrentUser] = useState({});
@@ -37,6 +38,7 @@ export default function Profile({ setToglle }) {
         <h1> Name:{currentUser.name}</h1>
         <h4>email {currentUser.email}</h4>
         <img src={currentUser.imageUrl} />
+        <DeleteButton userId={currentUser?._id} />
       </div>
     </div>
   );

@@ -120,7 +120,7 @@ export default function PostCard({ post, setPosts }) {
         <div className="toggleContainer">
           <SlOptions
             onClick={
-              logedUser?.email == post.user.email
+              logedUser?.email == post?.user?.email
                 ? handleToggle
                 : handlNotuserofPost
             }

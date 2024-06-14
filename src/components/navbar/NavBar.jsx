@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import img from "../../assets/together2.png";
+import imgProfile from "../../assets/profile.png";
 import { UserContext } from "../../context/UserProvider";
 import "./style.css";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
@@ -19,11 +19,9 @@ export default function NavBar({ toggle, setToglle }) {
 
   const [selectedUser, setSelectedUser] = useState({});
   const [toggleSideChat, setToglleChat] = useState(false);
-  const [chatToglle, setChatToglle] = useState(false);
+  // const [chatToglle, setChatToglle] = useState(false);
 
   const { logedUser, setLogedUser } = useContext(UserContext);
-
-  // const navigate = useNavigate();
 
   const toglleChatMessages = () => {
     setToglleChat(!toggleSideChat);
@@ -75,8 +73,13 @@ export default function NavBar({ toggle, setToglle }) {
               {userNames
                 ? userNames?.map((user, i) => {
                     return (
-                      <Link key={i} to={`/profile/${user._id}`}>
+                      <Link
+                        className="selectProfile"
+                        key={i}
+                        to={`/profile/${user._id}`}
+                      >
                         {user.name}
+                        <img src={user.imageUrl ? user.imageUrl : imgProfile} />
                       </Link>
                     );
                   })

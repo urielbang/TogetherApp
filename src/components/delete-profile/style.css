@@ -1,0 +1,117 @@
+menu,
+nav {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 8rem 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  display: inline-block;
+  background-color: rgb(50, 52, 61);
+  color: #ffffff;
+  border-radius: 4px;
+  font-weight: 600;
+  border: none;
+  height: 36px;
+  line-height: 1;
+  padding: 0 22px;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  user-select: none;
+  text-decoration: none;
+}
+
+button small {
+  margin-left: 4px;
+  opacity: 0.9;
+}
+
+button small i {
+  margin-right: 1px;
+}
+
+button.warn,
+button[type="submit"] {
+  background-color: rgb(198, 48, 48);
+}
+
+dialog {
+  border: none;
+  border-radius: 4px;
+  color: rgb(155, 155, 160);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  background-color: rgb(26, 27, 30);
+}
+
+dialog::backdrop {
+  background: linear-gradient(
+    45deg,
+    rgb(18, 18, 20, 0.4),
+    rgb(17, 17, 20, 0.8)
+  );
+}
+
+dialog[open] {
+  animation: scale 0.3s ease normal;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop 0.3s ease normal;
+}
+
+dialog.hide {
+  animation-direction: reverse;
+}
+
+dialog menu {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  vertical-align: middle;
+  justify-content: center;
+  gap: 12px;
+}
+
+dialog menu small {
+  margin-right: auto;
+}
+
+dialog i.cancel {
+  cursor: pointer;
+  padding: 0 5px;
+  float: right;
+}
+
+output {
+  color: #ffffff;
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes backdrop {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

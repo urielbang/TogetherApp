@@ -2657,22 +2657,22 @@ export const svg = `
 		<g>
 			<line fill="none" x1="136.654" y1="231.395" x2="287.233" y2="198.513"/>
 			<text transform="matrix(0.977 -0.2134 0 1 149.3367 226.363)" font-family="'Pathway Gothic One'" font-size="39.6581">T</text>
-			<text transform="matrix(0.977 -0.2133 0 1 161.5945 223.6863)" font-family="'Pathway Gothic One'" font-size="39.6581">R</text>
-			<text transform="matrix(0.977 -0.2133 0 1 175.5847 220.6306)" font-family="'Pathway Gothic One'" font-size="39.6581">A</text>
-			<text transform="matrix(0.977 -0.2133 0 1 190.0623 217.4695)" font-family="'Pathway Gothic One'" font-size="39.6581">V</text>
-			<text transform="matrix(0.977 -0.2133 0 1 203.6252 214.5085)" font-family="'Pathway Gothic One'" font-size="39.6581">E</text>
-			<text transform="matrix(0.977 -0.2133 0 1 215.5266 211.9099)" font-family="'Pathway Gothic One'" font-size="39.6581">L</text>
+			<text transform="matrix(0.977 -0.2133 0 1 161.5945 223.6863)" font-family="'Pathway Gothic One'" font-size="39.6581">O</text>
+			<text transform="matrix(0.977 -0.2133 0 1 175.5847 220.6306)" font-family="'Pathway Gothic One'" font-size="39.6581">G</text>
+			<text transform="matrix(0.977 -0.2133 0 1 190.0623 217.4695)" font-family="'Pathway Gothic One'" font-size="39.6581">E</text>
+			<text transform="matrix(0.977 -0.2133 0 1 203.6252 214.5085)" font-family="'Pathway Gothic One'" font-size="39.6581">T</text>
+			<text transform="matrix(0.977 -0.2133 0 1 215.5266 211.9099)" font-family="'Pathway Gothic One'" font-size="39.6581">H</text>
 			<text transform="matrix(0.977 -0.2133 0 1 226.9495 209.4148)" font-family="'Pathway Gothic One'" font-size="39.6581">E</text>
 			<text transform="matrix(0.977 -0.2133 0 1 238.844 206.8171)" font-family="'Pathway Gothic One'" font-size="39.6581">R</text>
 		</g>
 		<g>
 			<line fill="none" x1="146.574" y1="189.775" x2="205.712" y2="176.861"/>
-			<text transform="matrix(0.977 -0.2134 0 1 151.6272 187.7834)" font-family="'Pathway Gothic One'" font-size="15.5752">B</text>
-			<text transform="matrix(0.977 -0.2134 0 1 157.1804 186.5706)" font-family="'Pathway Gothic One'" font-size="15.5752">E</text>
+			<text transform="matrix(0.977 -0.2134 0 1 151.6272 187.7834)" font-family="'Pathway Gothic One'" font-size="15.5752">S</text>
+			<text transform="matrix(0.977 -0.2134 0 1 157.1804 186.5706)" font-family="'Pathway Gothic One'" font-size="15.5752">O</text>
 			<text transform="matrix(0.977 -0.2134 0 1 161.8459 185.552)" font-family="'Pathway Gothic One'" font-size="15.5752">C</text>
-			<text transform="matrix(0.977 -0.2134 0 1 167.1052 184.4036)" font-family="'Pathway Gothic One'" font-size="15.5752">O</text>
-			<text transform="matrix(0.977 -0.2133 0 1 172.5046 183.2244)" font-family="'Pathway Gothic One'" font-size="15.5752">M</text>
-			<text transform="matrix(0.977 -0.2133 0 1 179.8552 181.6189)" font-family="'Pathway Gothic One'" font-size="15.5752">E</text>
+			<text transform="matrix(0.977 -0.2134 0 1 167.1052 184.4036)" font-family="'Pathway Gothic One'" font-size="15.5752">I</text>
+			<text transform="matrix(0.977 -0.2133 0 1 172.5046 183.2244)" font-family="'Pathway Gothic One'" font-size="15.5752">A</text>
+			<text transform="matrix(0.977 -0.2133 0 1 179.8552 181.6189)" font-family="'Pathway Gothic One'" font-size="15.5752">L</text>
 			<text transform="matrix(0.977 -0.2133 0 1 184.5198 180.6003)" font-family="'Pathway Gothic One'" font-size="15.5752"> </text>
 			<text transform="matrix(0.977 -0.2133 0 1 186.8635 180.0886)" font-family="'Pathway Gothic One'" font-size="15.5752">A</text>
 		</g>
@@ -2680,11 +2680,11 @@ export const svg = `
 			<line fill="none" x1="213.236" y1="234.207" x2="272.375" y2="221.292"/>
 			<text transform="matrix(0.977 -0.2133 0 1 218.2815 232.2166)" font-family="'Pathway Gothic One'" font-size="15.5752"> </text>
 			<text transform="matrix(0.977 -0.2134 0 1 220.6321 231.7029)" font-family="'Pathway Gothic One'" font-size="15.5752"> </text>
-			<text transform="matrix(0.977 -0.2133 0 1 222.9778 231.1912)" font-family="'Pathway Gothic One'" font-size="15.5752">T</text>
-			<text transform="matrix(0.977 -0.2134 0 1 227.7874 230.1404)" font-family="'Pathway Gothic One'" font-size="15.5752">O</text>
+			<text transform="matrix(0.977 -0.2133 0 1 222.9778 231.1912)" font-family="'Pathway Gothic One'" font-size="15.5752">M</text>
+			<text transform="matrix(0.977 -0.2134 0 1 227.7874 230.1404)" font-family="'Pathway Gothic One'" font-size="15.5752">E</text>
 			<text transform="matrix(0.977 -0.2133 0 1 233.1858 228.9607)" font-family="'Pathway Gothic One'" font-size="15.5752">D</text>
-			<text transform="matrix(0.977 -0.2133 0 1 238.8342 227.7273)" font-family="'Pathway Gothic One'" font-size="15.5752">A</text>
-			<text transform="matrix(0.977 -0.2134 0 1 244.5217 226.4861)" font-family="'Pathway Gothic One'" font-size="15.5752">Y</text>
+			<text transform="matrix(0.977 -0.2133 0 1 238.8342 227.7273)" font-family="'Pathway Gothic One'" font-size="15.5752">I</text>
+			<text transform="matrix(0.977 -0.2134 0 1 244.5217 226.4861)" font-family="'Pathway Gothic One'" font-size="15.5752">A</text>
 		</g>
 		
 			<rect x="152.606" y="219.751" transform="matrix(0.9774 -0.2115 0.2115 0.9774 -42.0389 47.9254)" width="100.736" height="1.385"/>

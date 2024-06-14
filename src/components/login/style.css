@@ -16,8 +16,9 @@
 .containerLogin input {
   width: 20vw;
   height: 5vh;
+  border: solid #6658f6 1px;
   border-radius: 1.5rem;
-  border: none;
+  padding: 0.5rem;
 }
 
 .btn-register {
