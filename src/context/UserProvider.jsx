@@ -1,12 +1,14 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { APIBaseUrl } from "../config";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
 export default function UserProvider({ children }) {
   const [inputData, setInputData] = useState({});
   const [logedUser, setLogedUser] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
@@ -20,7 +22,7 @@ export default function UserProvider({ children }) {
     setLogedUser(resUser.data.userFound);
 
     localStorage.setItem("token", resUser.data.token);
-    // location.reload();
+    navigate("/");
   };
 
   const getUser = async () => {

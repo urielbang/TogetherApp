@@ -14,7 +14,23 @@ main {
   gap: 1rem;
 }
 
-button {
+.warn {
+  display: inline-block;
+  color: #ffffff;
+  border-radius: 4px;
+  font-weight: 600;
+  border: none;
+  height: 36px;
+  line-height: 1;
+  padding: 0 22px;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  user-select: none;
+  text-decoration: none;
+  background-color: rgb(198, 48, 48);
+}
+.close {
   display: inline-block;
   background-color: rgb(50, 52, 61);
   color: #ffffff;
@@ -40,10 +56,10 @@ button small i {
   margin-right: 1px;
 }
 
-button.warn,
+/* .warn,
 button[type="submit"] {
   background-color: rgb(198, 48, 48);
-}
+} */
 
 dialog {
   border: none;

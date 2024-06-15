@@ -17,7 +17,7 @@ function App() {
   const [toggle, setToglle] = useState(false);
 
   return (
-    <BrowserRouter>
+    <>
       {logedUser?.email ? (
         <div className="containerApp">
           <NavBar toggle={toggle} setToglle={setToglle} />
@@ -44,7 +44,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       )}
-    </BrowserRouter>
+    </>
   );
 }
 

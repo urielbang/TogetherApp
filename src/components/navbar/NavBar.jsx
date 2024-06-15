@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img from "../../assets/together2.png";
 import imgProfile from "../../assets/profile.png";
 import { UserContext } from "../../context/UserProvider";
@@ -16,10 +16,10 @@ import Message from "../../pages/messagesPage/Message";
 
 export default function NavBar({ toggle, setToglle }) {
   const [userNames, setUsersName] = useState(null);
+  const navigate = useNavigate();
 
   const [selectedUser, setSelectedUser] = useState({});
   const [toggleSideChat, setToglleChat] = useState(false);
-  // const [chatToglle, setChatToglle] = useState(false);
 
   const { logedUser, setLogedUser } = useContext(UserContext);
 
@@ -34,6 +34,7 @@ export default function NavBar({ toggle, setToglle }) {
   const handleLogOut = () => {
     localStorage.removeItem("token");
     setLogedUser({});
+    navigate("/");
   };
   const handleChange = async (e) => {
     setSelectedUser(e.target.value);
@@ -98,7 +99,10 @@ export default function NavBar({ toggle, setToglle }) {
           </li>
           <li>
             <Link to="/account">
-              <img className="iconHome" src={logedUser?.imageUrl} />
+              <img
+                className="iconHome"
+                src={logedUser?.imageUrl ? logedUser?.imageUrl : imgProfile}
+              />
             </Link>
           </li>
 

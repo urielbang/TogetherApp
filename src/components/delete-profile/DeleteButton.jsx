@@ -1,20 +1,28 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import "./style.css";
 import axios from "axios";
 import { APIBaseUrl } from "../../config";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserProvider";
+import { IoEllipseSharp } from "react-icons/io5";
 
 export default function DeleteButton({ userId }) {
   const dialogRef = useRef(null);
   const outputRef = useRef(null);
+  const { logedUser } = useContext(UserContext);
+
   const [output, setOutput] = useState("");
   const navigate = useNavigate();
 
   const handleDelete = async () => {
-    const res = await axios.delete(`${APIBaseUrl}users/${userId}`);
-    const data = await res.data;
-    console.log(data);
-    navigate("/");
+    if (logedUser?._id == userId || logedUser?.role == "admin") {
+      const res = await axios.delete(`${APIBaseUrl}users/${userId}`);
+      const data = await res.data;
+      console.log(data);
+      navigate("/");
+    } else {
+      alert("only admin or the user can do this option");
+    }
   };
 
   useEffect(() => {
@@ -81,7 +89,9 @@ export default function DeleteButton({ userId }) {
             <small>
               <i className="fa-solid fa-keyboard"></i> esc
             </small>
-            <button value="false">Close</button>
+            <button className="close" value="false">
+              Close
+            </button>
             <button onClick={handleDelete} value="true" className="warn">
               Yes
             </button>
