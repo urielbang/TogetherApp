@@ -10,22 +10,55 @@ import { UserContext } from "../../context/UserProvider";
 export default function Message({ toggleSideChat }) {
   const [users, setUsers] = useState([]);
   const [currentID, setCurrentUserId] = useState("");
+  const [inputData, setInputData] = useState("");
   const { logedUser } = useContext(UserContext);
 
   const handleClick = (id) => {
-    console.log(id);
+    setCurrentUserId(id);
   };
 
   const fetchUsers = async () => {
-    const res = await axios.get(`${APIBaseUrl}users`);
-    const data = res.data;
-    console.log(data);
-    setUsers(data);
+    try {
+      const res = await axios.get(`${APIBaseUrl}users`);
+      const data = res.data;
+      setUsers(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = (e) => {
+    setInputData(e.target.value);
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await axios.post(
+        `${APIBaseUrl}messages`,
+        {
+          sender: logedUser?._id,
+          receiver: currentID,
+          content: inputData,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await res.data;
+
+      console.log(data);
+      setInputData("");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     fetchUsers();
-    console.log(logedUser);
   }, []);
 
   return (
@@ -62,8 +95,12 @@ export default function Message({ toggleSideChat }) {
               className="inputChat"
               type="text"
               placeholder="Type a message..."
+              onChange={handleChange}
+              value={inputData}
             />
-            <button className="sendButton">Send</button>
+            <button onClick={handleSubmit} className="sendButton">
+              Send
+            </button>
           </div>
         </div>
       </div>
