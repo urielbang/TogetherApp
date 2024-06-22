@@ -1,0 +1,28 @@
+.message {
+  max-width: 60%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Sender message bubble */
+.sender {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  border-top-right-radius: 0;
+}
+
+/* Receiver message bubble */
+.receiver {
+  align-self: flex-start;
+  background-color: #e9ecef;
+  color: black;
+  border-top-left-radius: 0;
+}
+.chatMessages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
