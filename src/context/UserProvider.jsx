@@ -8,6 +8,7 @@ export const UserContext = createContext();
 export default function UserProvider({ children }) {
   const [inputData, setInputData] = useState({});
   const [logedUser, setLogedUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -17,12 +18,18 @@ export default function UserProvider({ children }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const resUser = await axios.post(`${APIBaseUrl}users/login`, inputData);
+    try {
+      setIsLoading(true);
+      const resUser = await axios.post(`${APIBaseUrl}users/login`, inputData);
 
-    setLogedUser(resUser.data.userFound);
+      setLogedUser(resUser.data.userFound);
 
-    localStorage.setItem("token", resUser.data.token);
-    navigate("/");
+      localStorage.setItem("token", resUser.data.token);
+      navigate("/");
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getUser = async () => {
@@ -46,7 +53,7 @@ export default function UserProvider({ children }) {
 
   return (
     <UserContext.Provider
-      value={{ handleChange, handleSubmit, logedUser, setLogedUser }}
+      value={{ handleChange, handleSubmit, logedUser, setLogedUser, isLoading }}
     >
       {children}
     </UserContext.Provider>

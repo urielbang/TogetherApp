@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../context/UserProvider";
+import { Oval } from "react-loader-spinner";
 import { svg } from "../../assets/svgString";
 
 import "./style.css";
@@ -7,7 +8,7 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 export default function Login() {
-  const { handleChange, handleSubmit } = useContext(UserContext);
+  const { handleChange, handleSubmit, isLoading } = useContext(UserContext);
 
   return (
     <div className="main">
@@ -32,10 +33,26 @@ export default function Login() {
             name="password"
           />
           <button className="btn-register" type="submit">
-            {" "}
-            Login!
+            {!isLoading ? (
+              "Login!"
+            ) : (
+              <Oval
+                height="30"
+                width="80"
+                color="blue"
+                ariaLabel="loading"
+                secondaryColor="lightgreen"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+                wrapperStyle={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              />
+            )}
           </button>
-          <Link to="/register">not have account?</Link>
+          <Link to="/register">d'ont have account?</Link>
         </form>
       </div>
     </div>

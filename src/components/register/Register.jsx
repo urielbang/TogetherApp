@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
+
 import axios from "axios";
 import "./style.css";
 import { svg } from "../../assets/svgString";
@@ -7,11 +9,23 @@ import { APIBaseUrl } from "../../config";
 
 export default function SignIn() {
   const [inputData, setInputData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const [image, setImage] = useState({});
+  const inputNameRef = useRef();
+  const inputEmailRef = useRef();
+  const inputPasswordRef = useRef();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
+      if (
+        inputPasswordRef.current.value.length < 8 ||
+        !inputEmailRef.current.value.includes("@")
+      ) {
+        return alert("Invalid input Please check your entered credentials.");
+      }
       const res = await axios.post(`${APIBaseUrl}users/register`, inputData);
 
       if (image.name) {
@@ -28,8 +42,9 @@ export default function SignIn() {
           }
         );
         await resImg.data;
-        console.log("registerd");
       }
+      console.log("registerd");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -47,6 +62,7 @@ export default function SignIn() {
         <h1>Sign in</h1>
         <form className="formRegister" onSubmit={handleSubmit}>
           <input
+            ref={inputNameRef}
             onChange={handleChange}
             type="text"
             placeholder="Name"
@@ -54,6 +70,7 @@ export default function SignIn() {
           />
           <input
             onChange={handleChange}
+            ref={inputEmailRef}
             type="email"
             placeholder="Email"
             name="email"
@@ -61,6 +78,7 @@ export default function SignIn() {
           <input
             onChange={handleChange}
             type="password"
+            ref={inputPasswordRef}
             placeholder="Password"
             name="password"
           />
@@ -83,8 +101,24 @@ export default function SignIn() {
             onChange={handleChange}
             type="submit"
           >
-            {" "}
-            Sign in!
+            {!isLoading ? (
+              "Sign in!"
+            ) : (
+              <Oval
+                height="30"
+                width="80"
+                color="blue"
+                ariaLabel="loading"
+                secondaryColor="lightgreen"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+                wrapperStyle={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              />
+            )}
           </button>
           <Link to="/login">alreade have account?</Link>
         </form>
