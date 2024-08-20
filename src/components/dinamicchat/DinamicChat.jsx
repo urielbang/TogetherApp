@@ -68,9 +68,6 @@ export default function DinamicChat() {
 
   return (
     <div className="chatMessages">
-      {/* <h3>{receiverMessage?.name}</h3>
-      <h2>{logedUser?.name}</h2> */}
-
       {messages?.length > 0 ? (
         messages?.map((message) => {
           if (message?.sender == logedUser?._id) {

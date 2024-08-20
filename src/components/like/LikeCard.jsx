@@ -59,9 +59,16 @@ export default function LikeCard({ postId, likes }) {
       });
 
       const isLiked = await resIsLiked.data;
-      console.log(isLiked);
 
-      if (isLiked.length != 0) {
+      const renderUsersLikes = isLiked.map((like) => {
+        if (like.user) {
+          return like.user._id;
+        } else {
+          return null;
+        }
+      });
+
+      if (renderUsersLikes.includes(logedUser._id)) {
         setLiked(true);
       } else {
         setLiked(false);
