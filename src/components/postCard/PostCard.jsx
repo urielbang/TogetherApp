@@ -164,13 +164,16 @@ export default function PostCard({ post, setPosts }) {
       <div className="containerMessages">
         <div className="formCommentContainer">
           <FaRegUserCircle className="iconUserComment" />
-          <form onSubmit={handleSubmitComment}>
+          <form className="form-post" onSubmit={handleSubmitComment}>
             <input
               onChange={handleChange}
               type="text"
               placeholder="write your comment"
               name="comment"
             />
+            <button className="post-button" type="submit">
+              Comment
+            </button>
           </form>
         </div>
         <div className="containerComment">

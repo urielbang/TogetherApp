@@ -200,3 +200,32 @@ align-items: center;
   width: 25vw;
   height: 40vh;
 }
+.post-button{
+  
+  width: 5vw;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 20px;
+  background-color: #6658f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.post-button:hover {
+  background-color: #5848c2;
+}
+
+.post-button:active {
+  background-color: #4a3ea4;
+}
+.form-post{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+}
