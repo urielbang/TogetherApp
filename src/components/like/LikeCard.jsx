@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AiTwotoneLike } from "react-icons/ai";
 import { UserContext } from "../../context/UserProvider";
 import { APIBaseUrl } from "../../config";
+import { Oval } from "react-loader-spinner";
 
 import "./style.css";
 import axios from "axios";
@@ -9,14 +10,13 @@ import axios from "axios";
 export default function LikeCard({ postId, likes }) {
   const [liked, setLiked] = useState(false);
   const [animation, setAnimation] = useState("");
-  const [toglle, setToglle] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { logedUser } = useContext(UserContext);
 
-  const toggleLike = async () => {
+  const handleClickLike = async () => {
     try {
-      setToglle(!toglle);
-
+      setIsLoading(true);
       const token = localStorage.getItem("token");
 
       if (!liked) {
@@ -34,17 +34,36 @@ export default function LikeCard({ postId, likes }) {
         setLiked(true);
         setAnimation("bounce");
         setTimeout(() => setAnimation(""), 700);
+        setIsLoading(false);
       } else {
-        const resRemoveLike = await axios.delete(
-          `${APIBaseUrl}likes/${isLiked._id}`
-        );
-        const likesRemove = await resRemoveLike.data;
-        console.log(likesRemove);
-        setLiked(!liked);
+        setIsLoading(true);
+        const token = localStorage.getItem("token");
+
+        const likesOfPost = await axios.get(`${APIBaseUrl}likes/${postId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await likesOfPost.data;
+
+        const foundLike = data.filter((like) => {
+          return like.user._id === logedUser._id;
+        });
+
+        await axios.delete(`${APIBaseUrl}likes/${foundLike[0]._id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setIsLoading(false);
+        setLiked(false);
       }
     } catch (error) {
       console.log(error);
-      alert("you already liked this post!");
+
+      // alert("you already liked this post!");
     }
   };
 
@@ -80,10 +99,27 @@ export default function LikeCard({ postId, likes }) {
 
   return (
     <div className="containerLikeCard">
-      <div className="like-button" onClick={toggleLike}>
-        <AiTwotoneLike
-          className={`icon ${liked ? "liked" : ""} ${animation}`}
-        />
+      <div className="like-button" onClick={handleClickLike}>
+        {isLoading ? (
+          <Oval
+            height="2rem"
+            width="2rem"
+            color="blue"
+            ariaLabel="loading"
+            secondaryColor="lightgreen"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+            wrapperStyle={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          />
+        ) : (
+          <AiTwotoneLike
+            className={`icon ${liked ? "liked" : ""} ${animation}`}
+          />
+        )}
         <p>likes {likes.length}</p>
       </div>
     </div>

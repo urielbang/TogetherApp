@@ -88,7 +88,10 @@ export default function Message({ toggleSideChat }) {
         </div>
         <div className="chatApp">
           <Routes>
-            <Route path="/chatUsers/:id" element={<DinamicChat />} />
+            <Route
+              path="/chatUsers/:id"
+              element={<DinamicChat dataDepend={handleSubmit} />}
+            />
           </Routes>
           <div className="inputContainer">
             <input
