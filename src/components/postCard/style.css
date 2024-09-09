@@ -234,3 +234,24 @@ align-items: center;
   gap: 1rem;
   flex-direction: column;
 }
+
+@media (max-width: 768px) {
+.containerCardsPosts  .cardPost .imgPost{
+  width: 25rem;
+  }
+  .containerMessages .formCommentContainer svg{
+    width: 3rem;
+  }
+ .containerCardsPosts .form-post input{
+  
+  width: 14rem;
+  
+ }
+ .post-button{
+  width: 6rem;
+ }
+ .containerHeadPost a .headImg{
+  width: 4rem;
+ }
+
+}

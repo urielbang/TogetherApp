@@ -124,3 +124,12 @@
   color: #888;
   font-size: small;
 }
+@media (max-width: 768px) {
+  .createPostContainer .btn-post {
+    width: 5rem;
+  }
+  .createPostContainer .postCreate {
+    height: 29em;
+    width: 23rem;
+  }
+}

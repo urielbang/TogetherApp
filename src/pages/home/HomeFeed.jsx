@@ -80,6 +80,8 @@ export default function HomeFeed({ setToglle }) {
     const dataSort = data.reverse();
     setPosts(dataSort);
   };
+
+  //! set the image/video file
   const handleChangeVideo = (e) => {
     setImage(e.target.files[0]);
   };
