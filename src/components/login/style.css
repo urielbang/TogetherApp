@@ -182,3 +182,21 @@
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-animation: rotate-right 12s linear 0s infinite;
 }
+
+@media only screen and (max-width: 800px) {
+  #logPage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .containerLogin form {
+    display: flex;
+    align-items: center;
+  }
+  .containerLogin form input {
+    width: 14rem;
+  }
+  .svgClass {
+    width: 100%;
+  }
+}

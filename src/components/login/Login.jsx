@@ -1,19 +1,15 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../context/UserProvider";
 import { Oval } from "react-loader-spinner";
 import { svg } from "../../assets/svgString";
-
 import "./style.css";
-
 import { Link } from "react-router-dom";
 
 export default function Login() {
   const { handleChange, handleSubmit, isLoading } = useContext(UserContext);
 
   return (
-    <div className="main">
-      {/* <div className="picLogin"></div> */}
-
+    <div className="main" id="logPage">
       <div className="svgClass" dangerouslySetInnerHTML={{ __html: svg }} />
 
       <div className="containerLogin">
