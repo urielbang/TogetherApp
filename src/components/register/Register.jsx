@@ -47,6 +47,7 @@ export default function SignIn() {
       navigate("/login");
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
   const handleChange = (e) => {

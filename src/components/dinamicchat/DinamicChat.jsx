@@ -86,20 +86,21 @@ export default function DinamicChat({ dataDepend }) {
 
           if (message?.sender === logedUser?._id) {
             return (
-              <p className="message sender" key={message?._id}>
+              <div className="message sender" key={message?._id}>
                 {message?.content}
-              </p>
+                {/* <img src={message?.imageUrl} alt="pic" /> */}
+              </div>
             );
           } else if (message?.receiver === logedUser?._id) {
             return (
-              <p className="message receiver" key={message?._id}>
+              <div className="message receiver" key={message?._id}>
                 {message?.content}
-              </p>
+              </div>
             );
           }
         })
       ) : (
-        <p>No messages</p>
+        <p>אין הודעות תתחילו לדבר...</p>
       )}
     </div>
   );

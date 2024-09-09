@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserProvider";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
@@ -7,9 +7,7 @@ import { SlOptions } from "react-icons/sl";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
-
 import LikeCard from "../like/LikeCard";
-
 import "./style.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -31,6 +29,8 @@ export default function PostCard({ post, setPosts }) {
   const handleToggle = () => {
     seToglle(!toglle);
   };
+
+  //! delete post
   const handleDeletePost = async (id) => {
     const token = localStorage.getItem("token");
 
@@ -47,6 +47,8 @@ export default function PostCard({ post, setPosts }) {
     }
     seToglle(false);
   };
+
+  //! fetch posts and set the current posts after delete one
   const fecthPosts = async () => {
     try {
       const res = await axios.get(`${APIBaseUrl}posts`);
@@ -58,6 +60,8 @@ export default function PostCard({ post, setPosts }) {
       console.log(err);
     }
   };
+
+  //! show the time the post on the air
   const dateToTimeFromNow = (createdAt) => {
     const datetimeString = createdAt;
     const givenDatetime = new Date(datetimeString);
@@ -74,10 +78,12 @@ export default function PostCard({ post, setPosts }) {
     return `${minutes} Minutes ago`;
   };
 
+  //!set comments from the props to state
   useEffect(() => {
     setCommnts(post.comments);
-  }, []);
+  }, [post]);
 
+  //! add a new comment
   const handleSubmitComment = async (e) => {
     e.preventDefault();
     const body = { ...comment, user: logedUser._id, post: post._id };
@@ -96,11 +102,15 @@ export default function PostCard({ post, setPosts }) {
       console.log(error);
     }
   };
+
+  //! collect the data from the comment
   const handleChange = (e) => {
     setComment({ ...comment, content: e.target.value });
   };
 
-  const handlNotuserofPost = () => {};
+  const handleEditPost = async (id) => {
+    // const res = await axios.post(`${APIBaseUrl}posts/${id}`);
+  };
 
   return (
     <div className="cardPost">
@@ -123,7 +133,7 @@ export default function PostCard({ post, setPosts }) {
               logedUser?.email == post?.user?.email ||
               logedUser?.role == "admin"
                 ? handleToggle
-                : handlNotuserofPost
+                : null
             }
             className="iconOptions"
           />
@@ -131,16 +141,27 @@ export default function PostCard({ post, setPosts }) {
             <div className="dropDown">
               <p
                 onClick={() => {
-                  if (logedUser?.email == post.user.email) {
+                  if (
+                    logedUser?.email == post.user.email ||
+                    logedUser?.role == "admin"
+                  ) {
                     handleDeletePost(post._id);
                   }
                 }}
               >
-                {" "}
                 <IoIosRemoveCircleOutline />
                 Remove Post
               </p>
-              <p>
+              <p
+                onClick={() => {
+                  if (
+                    logedUser?.email == post.user.email ||
+                    logedUser?.role == "admin"
+                  ) {
+                    handleEditPost(post._id);
+                  }
+                }}
+              >
                 <MdEdit />
                 Edit Post
               </p>
@@ -150,7 +171,7 @@ export default function PostCard({ post, setPosts }) {
       </div>
       <div onClick={() => seToglle(false)} className="postContext">
         <div className="containerStatus">
-          <p className="status">{post.content}</p>
+          {!toglle ? <p className="status">{post.content}</p> : <input />}
         </div>
         {post.imageUrl ? <img className="imgPost" src={post.imageUrl} /> : ""}
         {post.imageUrl?.includes("mp4") ? (
@@ -178,7 +199,6 @@ export default function PostCard({ post, setPosts }) {
         </div>
         <div className="containerComment">
           <div className="commentIconAndNum">
-            {" "}
             <FaRegComment
               onClick={toggleSgowComments}
               className="iconComment"
@@ -186,11 +206,9 @@ export default function PostCard({ post, setPosts }) {
             <span>{commentsLength} comments</span>
           </div>
           <div className="conainerLikeAndNum">
-            {" "}
             <LikeCard postId={post._id} likes={post.likes} />
           </div>
           <div className="shareClass">
-            {" "}
             <CiShare2 className="iconComment" />
           </div>
         </div>

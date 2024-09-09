@@ -26,21 +26,27 @@ export default function Profile({ setToglle }) {
   useEffect(() => {
     fetchUSerById();
     setToglle(false);
-  }, []);
+  }, [fetchUSerById, setToglle]);
 
   console.log(currentUser);
   return (
     <div className="main" onClick={handleToglle}>
-      <div className="containerAcount">
-        <div className="goBack">
-          <Link to="/" className="goBack">
-            <IoMdArrowRoundBack /> back
+      <div className="profile-container">
+        <div className="back-button">
+          <Link to="/" className="back-link">
+            <IoMdArrowRoundBack /> Back
           </Link>
         </div>
-        <h1> Name:{currentUser.name}</h1>
-        <h4>email {currentUser.email}</h4>
-        <img src={currentUser.imageUrl ? currentUser.imageUrl : imgProfile} />
-        <DeleteButton userId={currentUser?._id} />
+        <div className="profile-details">
+          <img
+            className="profile-image"
+            src={currentUser.imageUrl ? currentUser.imageUrl : imgProfile}
+            alt="Profile"
+          />
+          <h1 className="profile-name">Name: {currentUser.name}</h1>
+          <h4 className="profile-email">Email: {currentUser.email}</h4>
+          <DeleteButton userId={currentUser?._id} className="delete-btn" />
+        </div>
       </div>
     </div>
   );

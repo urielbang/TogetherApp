@@ -18,6 +18,8 @@ export default function HomeFeed({ setToglle }) {
   const handleToglle = () => {
     setToglle(false);
   };
+
+  //! to post a new Post
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,6 +62,8 @@ export default function HomeFeed({ setToglle }) {
       console.log(error);
     }
   };
+
+  //! collect the data input from user
   const handleChange = (e) => {
     setContent({
       ...centent,
@@ -68,6 +72,7 @@ export default function HomeFeed({ setToglle }) {
     });
   };
 
+  //! fetch all posts exist
   const fetcPosts = async () => {
     const res = await axios.get(`${APIBaseUrl}posts`);
     const data = await res.data;
@@ -78,9 +83,10 @@ export default function HomeFeed({ setToglle }) {
   const handleChangeVideo = (e) => {
     setImage(e.target.files[0]);
   };
+
   useEffect(() => {
     fetcPosts();
-  }, [posts]);
+  }, []);
 
   return (
     <div className="main" onClick={handleToglle}>

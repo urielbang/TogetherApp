@@ -11,3 +11,111 @@
   gap: 0.5rem;
   margin-top: 1rem;
 }
+
+/* Profile container for a card-like effect */
+.profile-container {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Back button */
+.back-button {
+  text-align: left;
+}
+
+.back-link {
+  font-size: 1rem;
+  color: #3498db;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #2c7bbd;
+}
+
+/* Profile details container */
+.profile-details {
+  margin-top: 20px;
+}
+
+/* Profile Image */
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #3498db;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+/* Profile Name */
+.profile-name {
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.profile-name:hover {
+  color: #3498db;
+}
+
+/* Profile Email */
+.profile-email {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 30px 20px;
+  }
+
+  .profile-name {
+    font-size: 1.5rem;
+  }
+
+  .profile-email {
+    font-size: 1rem;
+  }
+}

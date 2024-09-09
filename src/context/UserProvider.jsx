@@ -28,7 +28,9 @@ export default function UserProvider({ children }) {
       navigate("/");
       setIsLoading(false);
     } catch (error) {
+      alert("email or password not correct!");
       console.log(error);
+      setIsLoading(false);
     }
   };
 
