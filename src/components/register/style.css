@@ -76,3 +76,31 @@
   height: 60vh;
   display: flex;
 }
+@media only screen and (max-width: 800px) {
+  #registerPage {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 100%;
+  }
+  #registerPage form {
+    display: flex;
+    align-items: center;
+  }
+  #registerPage form input {
+    width: 14rem;
+  }
+  .btnRegisterContainer {
+    display: flex;
+    align-items: center;
+  }
+  .btnRegisterContainer button {
+    width: 7rem;
+  }
+  .svgClass {
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+  }
+}

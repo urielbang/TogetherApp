@@ -57,7 +57,7 @@ export default function SignIn() {
     setImage(e.target.files[0]);
   };
   return (
-    <div className="main">
+    <div className="main" id="registerPage">
       <div className="svgClass" dangerouslySetInnerHTML={{ __html: svg }} />
       <div className="containerRegister">
         <h1>Sign in</h1>
@@ -97,31 +97,33 @@ export default function SignIn() {
             </label>
           </div>
 
-          <button
-            className="btn-register"
-            onChange={handleChange}
-            type="submit"
-          >
-            {!isLoading ? (
-              "Sign in!"
-            ) : (
-              <Oval
-                height="30"
-                width="80"
-                color="blue"
-                ariaLabel="loading"
-                secondaryColor="lightgreen"
-                strokeWidth={2}
-                strokeWidthSecondary={2}
-                wrapperStyle={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              />
-            )}
-          </button>
-          <Link to="/login">alreade have account?</Link>
+          <div className="btnRegisterContainer">
+            <button
+              className="btn-register"
+              onChange={handleChange}
+              type="submit"
+            >
+              {!isLoading ? (
+                "Sign in!"
+              ) : (
+                <Oval
+                  height="30"
+                  width="80"
+                  color="blue"
+                  ariaLabel="loading"
+                  secondaryColor="lightgreen"
+                  strokeWidth={2}
+                  strokeWidthSecondary={2}
+                  wrapperStyle={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                />
+              )}
+            </button>
+            <Link to="/login">alreade have account?</Link>
+          </div>
         </form>
       </div>
     </div>

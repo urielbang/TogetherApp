@@ -146,3 +146,91 @@ display: none;
 .dataUsers a:hover{
   background-color: white;
 }
+.hamburger-react{
+  display: none;
+} 
+
+
+
+@media (max-width: 768px) {
+  .navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+
+  .iconAppNav {
+    width: 15vw;
+    height: auto;
+  }
+ 
+
+  .navBarMiddleIcons {
+    display: none; 
+
+  }
+.iconsContainer{
+  display: none;
+}
+ 
+
+  .hamburger-react {
+    display: block; 
+    margin-right: 2rem;
+  }
+  .nameUser{
+    display: none;
+  }
+.navBar.toggled .navBarMiddleIcons{
+  display: flex;
+
+  background-color: #f0f0f0;
+  position: absolute;
+  top: 6.7rem;
+  right: 3rem;
+  z-index: 10;
+
+}
+
+  .navBarMiddleIcons ul{
+    display: flex;
+    width: 100%;
+    
+    flex-direction: column;
+    width: 3rem;
+    height: 15rem;
+  
+  
+  }
+
+
+  .navBar .navBarMiddleIcons ul li a{
+    display: flex;
+    width: 7rem;
+    align-items: center;
+    justify-content: center;
+   
+
+  }
+
+  
+  
+  .iconHome {
+    width: 2.5rem;
+   
+    margin-right: 1rem;
+
+   
+  }
+  .formSearchUsers input{
+    width: 8rem;
+    padding: 1rem;
+  }
+ .navBar .iconAppNav{
+  width: 8rem;
+  height: 7rem;
+    
+  }
+
+}

@@ -13,11 +13,13 @@ import homeImg from "../../assets/wired-flat-63-home.gif";
 import logIn from "../../assets/login.png";
 import axios from "axios";
 import Message from "../../pages/messagesPage/Message";
+import { Spin as Hamburger } from "hamburger-react";
 
 export default function NavBar({ toggle, setToglle }) {
   const [userNames, setUsersName] = useState(null);
-  const navigate = useNavigate();
+  const [isOpen, setOpen] = useState(false); // Hamburger state
 
+  const navigate = useNavigate();
   const [selectedUser, setSelectedUser] = useState({});
   const [toggleSideChat, setToglleChat] = useState(false);
 
@@ -36,6 +38,7 @@ export default function NavBar({ toggle, setToglle }) {
     setLogedUser({});
     navigate("/");
   };
+
   const handleChange = async (e) => {
     setSelectedUser(e.target.value);
 
@@ -44,82 +47,87 @@ export default function NavBar({ toggle, setToglle }) {
         `${APIBaseUrl}users/search/${e.target.value}`
       );
       const data = await names.data;
-
       setUsersName(data);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     e.target[0].value = "";
   };
 
   return (
-    <div className="navBar">
-      <img className="iconAppNav" src={img} />
+    <div className={`navBar ${isOpen ? "toggled" : ""}`}>
+      <img className="iconAppNav" src={img} alt="App Logo" />
+      <div className="search-box">
+        <HiMiniMagnifyingGlass className="search-icon" />
+        <form className="formSearchUsers" onSubmit={handleSubmit}>
+          <input
+            onClick={handleToggleSearch}
+            onChange={handleChange}
+            type="text"
+            className="search-input"
+            placeholder="Search profile..."
+            list="data"
+          />
+          <div className={toggle ? "dataUsers" : "data"}>
+            {userNames
+              ? userNames.map((user, i) => (
+                  <Link
+                    className="selectProfile"
+                    key={i}
+                    to={`/profile/${user._id}`}
+                  >
+                    {user.name}
+                    <img
+                      src={user.imageUrl ? user.imageUrl : imgProfile}
+                      alt="Profile"
+                    />
+                  </Link>
+                ))
+              : ""}
+          </div>
+        </form>
+      </div>
       <div className="navBarMiddleIcons">
-        <div className="search-box">
-          <HiMiniMagnifyingGlass className="search-icon" />
-          <form className="formSearchUsers" onSubmit={handleSubmit}>
-            <input
-              onClick={handleToggleSearch}
-              onChange={handleChange}
-              type="text"
-              className="search-input"
-              placeholder="Search profile..."
-              list="data"
-            />
-            <div className={toggle == true ? "dataUsers" : "data"}>
-              {userNames
-                ? userNames?.map((user, i) => {
-                    return (
-                      <Link
-                        className="selectProfile"
-                        key={i}
-                        to={`/profile/${user._id}`}
-                      >
-                        {user.name}
-                        <img src={user.imageUrl ? user.imageUrl : imgProfile} />
-                      </Link>
-                    );
-                  })
-                : ""}
-            </div>
-          </form>
-        </div>
         <ul>
           <li>
             <Link to="/">
-              <img className="iconHome" src={homeImg} />
+              <img className="iconHome" src={homeImg} alt="Home" />
             </Link>
           </li>
           <li>
-            <img className="iconHome" src={logIn} onClick={handleLogOut} />
+            <img
+              className="iconHome"
+              src={logIn}
+              onClick={handleLogOut}
+              alt="Logout"
+            />
           </li>
           <li>
             <Link to="/account">
               <img
                 className="iconHome"
                 src={logedUser?.imageUrl ? logedUser?.imageUrl : imgProfile}
+                alt="Account"
               />
             </Link>
           </li>
-
           <li className="nameUser">{logedUser.name}</li>
         </ul>
       </div>
       <div className="iconsContainer">
-        <IoMdNotificationsOutline className="iconRignNavBar" />
-
-        <LuMessageSquare
-          className="iconRignNavBar"
-          onClick={toglleChatMessages}
-        />
-
-        <CiSettings className="iconSetting" />
+        <div className="innerContainerIcons">
+          <IoMdNotificationsOutline className="iconRignNavBar" />
+          <LuMessageSquare
+            className="iconRignNavBar"
+            onClick={toglleChatMessages}
+          />
+          <CiSettings className="iconSetting" />
+        </div>
       </div>
       <Message toggleSideChat={toggleSideChat} />
+      <Hamburger toggled={isOpen} toggle={setOpen} />
     </div>
   );
 }

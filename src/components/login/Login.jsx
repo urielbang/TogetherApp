@@ -28,27 +28,29 @@ export default function Login() {
             placeholder="Password"
             name="password"
           />
-          <button className="btn-register" type="submit">
-            {!isLoading ? (
-              "Login!"
-            ) : (
-              <Oval
-                height="30"
-                width="80"
-                color="blue"
-                ariaLabel="loading"
-                secondaryColor="lightgreen"
-                strokeWidth={2}
-                strokeWidthSecondary={2}
-                wrapperStyle={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              />
-            )}
-          </button>
-          <Link to="/register">d'ont have account?</Link>
+          <div>
+            <button className="btn-register" type="submit">
+              {!isLoading ? (
+                "Login!"
+              ) : (
+                <Oval
+                  height="30"
+                  width="80"
+                  color="blue"
+                  ariaLabel="loading"
+                  secondaryColor="lightgreen"
+                  strokeWidth={2}
+                  strokeWidthSecondary={2}
+                  wrapperStyle={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                />
+              )}
+            </button>
+            <Link to="/register">d'ont have account?</Link>
+          </div>
         </form>
       </div>
     </div>
