@@ -15,11 +15,13 @@ export default function LikeCard({ postId, likes }) {
 
   const { logedUser } = useContext(UserContext);
 
+  //! click on like
   const handleClickLike = async () => {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
 
+      //! if the like was not clicked and make animation click
       if (!liked) {
         const res = await axios.post(
           `${APIBaseUrl}likes`,
@@ -37,6 +39,7 @@ export default function LikeCard({ postId, likes }) {
         setTimeout(() => setAnimation(""), 700);
         setIsLoading(false);
       } else {
+        //! if was clicked then delete the like
         setIsLoading(true);
         const token = localStorage.getItem("token");
 
@@ -69,6 +72,7 @@ export default function LikeCard({ postId, likes }) {
     }
   };
 
+  //! check if current like is liked or not
   useEffect(() => {
     const fetchIsLiked = async () => {
       const token = localStorage.getItem("token");
@@ -82,6 +86,7 @@ export default function LikeCard({ postId, likes }) {
       const isLiked = await resIsLiked.data;
       setAllLikesFecth(isLiked);
 
+      //! return only the id of users that make likes on post
       const renderUsersLikes = isLiked.map((like) => {
         if (like.user) {
           return like.user._id;
@@ -90,6 +95,7 @@ export default function LikeCard({ postId, likes }) {
         }
       });
 
+      //! check if the ids is includes with current user log in
       if (renderUsersLikes.includes(logedUser._id)) {
         setLiked(true);
       } else {

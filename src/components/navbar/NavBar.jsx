@@ -20,28 +20,29 @@ export default function NavBar({ toggle, setToglle }) {
   const [isOpen, setOpen] = useState(false); // Hamburger state
 
   const navigate = useNavigate();
-  const [selectedUser, setSelectedUser] = useState({});
   const [toggleSideChat, setToglleChat] = useState(false);
 
   const { logedUser, setLogedUser } = useContext(UserContext);
 
+  //! open page of messages!
   const toglleChatMessages = () => {
     setToglleChat(!toggleSideChat);
   };
 
+  //! the search toggle whe profiles
   const handleToggleSearch = () => {
     setToglle(true);
   };
 
+  //! to log out
   const handleLogOut = () => {
     localStorage.removeItem("token");
     setLogedUser({});
     navigate("/");
   };
 
+  //! change the text in input and search profile
   const handleChange = async (e) => {
-    setSelectedUser(e.target.value);
-
     if (e.target.value.length) {
       const names = await axios.get(
         `${APIBaseUrl}users/search/${e.target.value}`

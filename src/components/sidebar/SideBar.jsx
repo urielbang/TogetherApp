@@ -1,4 +1,3 @@
-import React from "react";
 import { PiTelevisionSimpleBold } from "react-icons/pi";
 import { SlBadge } from "react-icons/sl";
 import { TfiWorld } from "react-icons/tfi";

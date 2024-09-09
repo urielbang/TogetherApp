@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserProvider";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -13,6 +13,7 @@ export default function DinamicChat({ dataDepend }) {
   const [receiverMessage, setReceiverMessage] = useState(null);
   const [messagesUser, setMessagesUser] = useState([]);
 
+  //! the the id params on id of the user that clicked
   const getUserById = async (id) => {
     try {
       const res = await axios.get(`${APIBaseUrl}users/${id}`);
@@ -23,6 +24,7 @@ export default function DinamicChat({ dataDepend }) {
     }
   };
 
+  //! make my all comments to be together like chat
   const mergeAndAlternate = (arr1, arr2) => {
     let mergedArray = [];
     let maxLength = Math.max(arr1.length, arr2.length);
@@ -39,6 +41,7 @@ export default function DinamicChat({ dataDepend }) {
     return mergedArray;
   };
 
+  //! get the messages of current user logs and from the user that was clicked
   const getMessagesCurrentChatUsers = async () => {
     if (!logedUser || !receiverMessage) return;
     const token = localStorage.getItem("token");
@@ -70,6 +73,7 @@ export default function DinamicChat({ dataDepend }) {
     }
   };
 
+  //! evrey time id is change make the func work
   useEffect(() => {
     getUserById(id);
   }, [id]);

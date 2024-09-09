@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
-
 import axios from "axios";
 import "./style.css";
 import { svg } from "../../assets/svgString";
@@ -16,6 +15,7 @@ export default function SignIn() {
   const inputPasswordRef = useRef();
   const navigate = useNavigate();
 
+  //! register button
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -50,9 +50,11 @@ export default function SignIn() {
       setIsLoading(false);
     }
   };
+  //! collect the data from inputs
   const handleChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
+  //! collect the data from file input
   const handleChangeVideo = (e) => {
     setImage(e.target.files[0]);
   };

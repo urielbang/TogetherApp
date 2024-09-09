@@ -11,10 +11,12 @@ export default function UserProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  //! collect inputs data to login
   const handleChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
 
+  //! login function
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -34,6 +36,7 @@ export default function UserProvider({ children }) {
     }
   };
 
+  //! stay the user loged
   const getUser = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -49,9 +52,10 @@ export default function UserProvider({ children }) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getUser();
-  }, []);
+  }, [logedUser]);
 
   return (
     <UserContext.Provider

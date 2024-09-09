@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { useState } from "react";
@@ -8,12 +8,15 @@ import { APIBaseUrl } from "../../config";
 export default function CommentCard({ comment }) {
   const [user, setUser] = useState({});
 
+  //! give all the data for the user comment
   const getUserById = async () => {
     try {
       const res = await axios.get(`${APIBaseUrl}users/${comment.user}`);
       const data = await res.data;
       setUser(data);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     getUserById();

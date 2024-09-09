@@ -13,10 +13,12 @@ export default function Message({ toggleSideChat }) {
   const [inputData, setInputData] = useState("");
   const { logedUser } = useContext(UserContext);
 
+  //! current user id to speak
   const handleClick = (id) => {
     setCurrentUserId(id);
   };
 
+  //! fetch all users
   const fetchUsers = async () => {
     try {
       const res = await axios.get(`${APIBaseUrl}users`);
@@ -27,10 +29,12 @@ export default function Message({ toggleSideChat }) {
     }
   };
 
+  //! input collect to the chat
   const handleChange = (e) => {
     setInputData(e.target.value);
   };
 
+  //! click send message
   const handleSubmit = async () => {
     try {
       const token = localStorage.getItem("token");

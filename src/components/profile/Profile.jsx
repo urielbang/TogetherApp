@@ -1,24 +1,25 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { APIBaseUrl } from "../../config";
 import imgProfile from "../../assets/profile.png";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import "./style.css";
 import DeleteButton from "../delete-profile/DeleteButton";
-import { UserContext } from "../../context/UserProvider";
 
 export default function Profile({ setToglle }) {
   const [currentUser, setCurrentUser] = useState({});
 
   const { id } = useParams();
 
+  //! fetch current page of profile from params
   const fetchUSerById = async () => {
     const res = await axios.get(`${APIBaseUrl}users/${id}`);
     const data = await res.data;
     setCurrentUser(data);
   };
 
+  //!toggle the nav search profile
   const handleToglle = () => {
     setToglle(false);
   };
@@ -26,7 +27,7 @@ export default function Profile({ setToglle }) {
   useEffect(() => {
     fetchUSerById();
     setToglle(false);
-  }, [fetchUSerById, setToglle]);
+  }, [setToglle]);
 
   console.log(currentUser);
   return (
