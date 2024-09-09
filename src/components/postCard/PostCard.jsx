@@ -25,9 +25,12 @@ export default function PostCard({ post, setPosts }) {
 
   const { logedUser } = useContext(UserContext);
 
+  //! toggle show all comments
   const toggleSgowComments = () => {
     setToglleCommnts(!toglleComments);
   };
+
+  //! toggle the edit icon
   const handleToggle = () => {
     seToglle(!toglle);
   };

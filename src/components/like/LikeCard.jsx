@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiTwotoneLike } from "react-icons/ai";
 import { UserContext } from "../../context/UserProvider";
 import { APIBaseUrl } from "../../config";
@@ -11,6 +11,7 @@ export default function LikeCard({ postId, likes }) {
   const [liked, setLiked] = useState(false);
   const [animation, setAnimation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [allLikesFetch, setAllLikesFecth] = useState([]);
 
   const { logedUser } = useContext(UserContext);
 
@@ -64,6 +65,7 @@ export default function LikeCard({ postId, likes }) {
       console.log(error);
 
       // alert("you already liked this post!");
+      console.log(error);
     }
   };
 
@@ -78,6 +80,7 @@ export default function LikeCard({ postId, likes }) {
       });
 
       const isLiked = await resIsLiked.data;
+      setAllLikesFecth(isLiked);
 
       const renderUsersLikes = isLiked.map((like) => {
         if (like.user) {
@@ -95,7 +98,7 @@ export default function LikeCard({ postId, likes }) {
     };
 
     fetchIsLiked();
-  }, []);
+  }, [logedUser._id, postId, liked]);
 
   return (
     <div className="containerLikeCard">
@@ -120,7 +123,7 @@ export default function LikeCard({ postId, likes }) {
             className={`icon ${liked ? "liked" : ""} ${animation}`}
           />
         )}
-        <p>likes {likes.length}</p>
+        <p>likes {allLikesFetch ? allLikesFetch.length : likes.length}</p>
       </div>
     </div>
   );
