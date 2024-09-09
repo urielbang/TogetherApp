@@ -16,8 +16,10 @@ import CommentCard from "../comment/CommentCard";
 export default function PostCard({ post, setPosts }) {
   const [toglle, seToglle] = useState(false);
   const [toglleComments, setToglleCommnts] = useState(false);
+  const [editToggle, setEdiToggle] = useState(false);
   const [comments, setCommnts] = useState([]);
   const [comment, setComment] = useState({});
+  const [editData, setEditData] = useState({ content: post.content });
 
   const [commentsLength, setCommenLength] = useState(post.comments.length);
 
@@ -108,8 +110,31 @@ export default function PostCard({ post, setPosts }) {
     setComment({ ...comment, content: e.target.value });
   };
 
-  const handleEditPost = async (id) => {
-    // const res = await axios.post(`${APIBaseUrl}posts/${id}`);
+  const handleChangeEditData = (e) => {
+    setEditData((prevEdit) => {
+      return {
+        ...prevEdit,
+        content: e.target.value,
+      };
+    });
+  };
+
+  //! to edit status post
+  const handleEditPost = async (e, id) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+
+    try {
+      await axios.patch(`${APIBaseUrl}posts/${id}`, editData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    setEdiToggle(false);
   };
 
   return (
@@ -152,16 +177,7 @@ export default function PostCard({ post, setPosts }) {
                 <IoIosRemoveCircleOutline />
                 Remove Post
               </p>
-              <p
-                onClick={() => {
-                  if (
-                    logedUser?.email == post.user.email ||
-                    logedUser?.role == "admin"
-                  ) {
-                    handleEditPost(post._id);
-                  }
-                }}
-              >
+              <p onClick={() => setEdiToggle((prevToggle) => !prevToggle)}>
                 <MdEdit />
                 Edit Post
               </p>
@@ -171,7 +187,18 @@ export default function PostCard({ post, setPosts }) {
       </div>
       <div onClick={() => seToglle(false)} className="postContext">
         <div className="containerStatus">
-          {!toglle ? <p className="status">{post.content}</p> : <input />}
+          {!editToggle ? (
+            <p className="status">{editData.content}</p>
+          ) : (
+            <form onSubmit={(e) => handleEditPost(e, post._id)}>
+              <input
+                type="text"
+                value={editData.content}
+                onChange={handleChangeEditData}
+              />
+              <button>save</button>
+            </form>
+          )}
         </div>
         {post.imageUrl ? <img className="imgPost" src={post.imageUrl} /> : ""}
         {post.imageUrl?.includes("mp4") ? (

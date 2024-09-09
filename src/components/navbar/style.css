@@ -15,6 +15,10 @@
   z-index: 10;
   justify-content: space-between;
 }
+.navBar .innerContainerIcons{
+  display: flex;
+  gap: 1rem;
+}
 .navBar .iconAppNav {
   width: 10vw;
   height: 14vh;
